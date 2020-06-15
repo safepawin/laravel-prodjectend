@@ -2,4 +2,3 @@
     @section('content')
         <main-component/>
     @endsection
-{{-- asas --}}
