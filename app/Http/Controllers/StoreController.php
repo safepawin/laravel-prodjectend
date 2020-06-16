@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
-use Darryldecode\Cart\Cart;
+use App\Store;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class CartController extends Controller
+class StoreController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +18,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        return view('cart');
+        return view('store');
     }
 
     /**
@@ -26,7 +28,7 @@ class CartController extends Controller
      */
     public function create()
     {
-        dd(\Cart::session(Auth::id())->getContent());
+        //
     }
 
     /**
@@ -48,15 +50,9 @@ class CartController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
-        \Cart::session(Auth::id())->add(array(
-            'id' => $product->id,
-            'name' => $product->product_name,
-            'price' => $product->product_price,
-            'quantity' => 1,
-            'attributes' => array('images' => $product->product_image[0])
-        ));
-        return redirect('/cart');
+        $store = Store::find($id)->first();
+        $product = Store::find($id)->product()->paginate(8);
+        return view('showstore')->with('store',$store)->with('product',$product);
     }
 
     /**
@@ -67,6 +63,7 @@ class CartController extends Controller
      */
     public function edit($id)
     {
+        //
     }
 
     /**
@@ -78,13 +75,7 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = Product::find($id);
-        \Cart::session(Auth::id())->update($id, [
-            'quantity' => 1,
-            'price' => $product->product_price,
-            'relative' => false
-        ]);
-        return \Cart::session(Auth::id())->getTotal();
+        //
     }
 
     /**
@@ -95,16 +86,6 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        \Cart::session(Auth::id())->remove($id);
-        return redirect('/cart');
-    }
-    public function decrease($id){
-        $product = Product::find($id);
-        \Cart::session(Auth::id())->update($id, [
-            'quantity' => -1,
-            'price' => $product->product_price,
-            'relative' => false
-        ]);
-        return \Cart::session(Auth::id())->getTotal();
+        //
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,16 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::resource('fliter', 'Api\FilterController');
+//filters
+Route::resource('storefilter', 'Api\StoreFilterController');
+Route::resource('productfilter', 'Api\ProductFilterController');
+Route::get('productfliter/{sort}/{id?}', 'Api\ProductFilterController@sortProducts')->name('filter.sort');
+//category
 Route::resource('category', 'Api\CategoryController');
+//products
 Route::resource('product', 'Api\ProductController');
 Route::get('product/search/{name}', 'Api\ProductController@searchProduct')->name('product.search');
-Route::get('fliter/{sort}/{id?}', 'Api\FilterController@sortProducts')->name('filter.sort');
+//cart
+//stores
+Route::resource('store', 'Api\StoreController');
+Route::get('store/search/{name}', 'Api\StoreController@searchStore')->name('store.search');

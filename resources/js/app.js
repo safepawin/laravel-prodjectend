@@ -6,12 +6,14 @@
 
 require('./bootstrap');
 require('../dist/js/adminlte');
+
 window.Vue = require('vue');
 
 Vue.component('main-component', require('./components/Maincomponent.vue').default);
-Vue.component('cart-component', require('./components/Cartcomponent.vue').default);
+Vue.component('store-component', require('./components/Storecomponent.vue').default);
 
 const app = new Vue({
     el: '#app',
 });
+
 

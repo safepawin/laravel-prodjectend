@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Product;
 
-class FilterController extends Controller
+class ProductFilterController extends Controller
 {
     /**
      * Display a listing of the resource.

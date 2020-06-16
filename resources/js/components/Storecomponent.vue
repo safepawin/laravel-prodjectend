@@ -14,17 +14,17 @@
           <button
             class="btn btn-outline-success my-2 my-sm-0"
             type="button"
-            @click="searchProduct"
+            @click="searchStore"
           >Search</button>
         </form>
       </div>
     </nav>
     <div class="container mt-5">
       <div class="row">
-        <div class="col-3">
+        <!-- <div class="col-3">
           <div class="card">
             <div class="card-header">
-              <h3>ประเภทสินค้า</h3>
+              <h3>ร้านค้า</h3>
             </div>
             <div class="card-body">
               <div class="form-check">
@@ -49,25 +49,25 @@
                     :id="filter.id"
                     @change="checkFilter(filter.id)"
                   />
-                  {{filter.category_name}}
+                  {{filter.store_name}}
                 </label>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-9">
+        </div> -->
+        <div class="col-12">
           <div class="row">
             <div class="col-12 border-bottom">
               <div class="row">
                 <div class="col-6 mr-auto">
-                  <h3>รายการสินค้า</h3>
-                  <p>ค้นพบสินค้าจำนวน {{products.length}}</p>
+                  <h3>รายชื่อร้านค้า</h3>
+                  <p>ค้นพบร้านค้าจำนวน {{stores.length}}</p>
                 </div>
                 <div class="col-6 ml-auto">
                   <!-- <button class="btn" @click="toggleSort()">
                     <i :class="{'fas fa-sort-amount-down':sort,'fas fa-sort-amount-up':!sort}"></i>
                   </button>-->
-                  <div class="dropdown text-right">
+                  <!-- <div class="dropdown text-right">
                     <button
                       class="btn btn-secondary dropdown-toggle"
                       type="button"
@@ -80,23 +80,19 @@
                       <button class="dropdown-item" @click="sortHighToLow">ราคาสูงสุด - ต่ำสุด</button>
                       <button class="dropdown-item" @click="sortLowToHigh">ราคาต่ำสุด - สูงสุด</button>
                     </div>
-                  </div>
+                  </div>-->
                 </div>
               </div>
             </div>
-            <div class="col-3 p-3" v-for="product in products" :key="product.id">
-              <a :href="'http://projectend.test:8080/product/'+product.id">
+            <div class="col-3 p-3" v-for="store in stores" :key="store.id">
+              <a :href="'http://projectend.test:8080/store/'+store.id">
                 <img class="img img-fluid" src="https://via.placeholder.com/300x200" alt />
               </a>
-              <p>{{product.product_name}}</p>
+              <p>{{store.store_name}}</p>
               <span>
-                ราคา
-                <b>{{product.product_price}}</b>
+                <b>{{store.store_detail}}</b>
               </span>
-              <span>
-                คงเหลือ
-                <b>{{product.product_quantity}}</b>
-              </span>
+              <span><b>{{store.start_store_at}}</b></span>
             </div>
           </div>
         </div>
@@ -108,74 +104,52 @@
 <script>
 export default {
   mounted() {
-    this.getProductFilter();
-    this.getProductAll();
+    this.getStoreFilter();
+    this.getStoreAll();
     console.log("mounted");
   },
   data() {
-    return { search: "", filters: [], products: [], filterId: "", sort: false };
+    return { search: "", filters: [], stores: [], filterId: "", sort: false };
   },
   methods: {
-    getProductAll() {
-      axios.get("http://projectend.test:8080/api/product").then(result => {
-        this.products = result.data;
-        console.log(this.products);
+    getStoreAll() {
+      axios.get("http://projectend.test:8080/api/store").then(result => {
+        this.stores = result.data;
+        console.log(this.stores);
       });
     },
-    getProductFilter() {
-      axios
-        .get("http://projectend.test:8080/api/productfilter")
-        .then(result => {
-          this.filters = result.data;
-          console.log(this.filters);
-        });
+    getStoreFilter() {
+      axios.get("http://projectend.test:8080/api/storefilter").then(result => {
+        this.filters = result.data;
+        console.log(this.filters);
+      });
     },
     checkFilter(id) {
       this.filterId = id;
       axios
-        .put(`http://projectend.test:8080/api/productfilter/${id}`)
+        .put(`http://projectend.test:8080/api/storefilter/${id}`)
         .then(result => {
-          this.products = result.data;
-          console.log(this.products);
+          this.stores = result.data;
+          console.log(this.stores);
         });
     },
-    searchProduct() {
+    searchStore() {
       if (this.search !== "") {
         axios
-          .get(`http://projectend.test:8080/api/product/search/${this.search}`)
+          .get(`http://projectend.test:8080/api/store/search/${this.search}`)
           .then(result => {
-            this.products = result.data;
-            console.log(this.products);
+            this.stores = result.data;
+            console.log(this.stores);
           });
       } else {
-        this.getProductAll();
+        this.getStoreAll();
       }
     },
     defaultFilter() {
-      axios.get("http://projectend.test:8080/api/product").then(result => {
-        this.products = result.data;
-        console.log(this.products);
+      axios.get("http://projectend.test:8080/api/storefilter").then(result => {
+        this.stores = result.data;
+        console.log(this.stores);
       });
-    },
-    sortLowToHigh() {
-      axios
-        .get(
-          `http://projectend.test:8080/api/product-fliter/asc/${this.filterId}`
-        )
-        .then(result => {
-          this.products = result.data;
-          console.log(result.data);
-        });
-    },
-    sortHighToLow() {
-      axios
-        .get(
-          `http://projectend.test:8080/api/productfliter/desc/${this.filterId}`
-        )
-        .then(result => {
-          this.products = result.data;
-          console.log(result.data);
-        });
     }
   }
 };

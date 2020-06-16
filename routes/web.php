@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,5 +26,7 @@ Route::get('/admin', function () {
     return view("admin.home");
 });
 
-Route::view('/cart', 'cart');
+Route::resource('cart', 'CartController')->middleware('auth');
+Route::delete('cart/delete/{id}', "CartController@decrease")->middleware('auth');
 Route::resource('product', 'ProductController')->middleware('auth');
+Route::resource('store', 'StoreController');

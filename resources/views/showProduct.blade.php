@@ -22,7 +22,7 @@
                         <p>คงเหลือ {{$data->product_quantity}} ชิ้น</p>
                     </div>
                     <div class="col-12 ">
-                        <a class="btn btn-danger" href="/">ย้อนหลับ</a>
+                        <a class="btn btn-danger text-white" onclick="window.history.back();">ย้อนหลับ</a>
                         <a class="btn btn-primary" href="/cart/{{$data->id}}">ซื้อ</a>
                     </div>
                     <div class="col-12 p-2 mt-2 border-top">
