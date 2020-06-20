@@ -52286,6 +52286,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ../dist/js/adminlte */ "./resources/dist/js/adminlte.js");
 
+__webpack_require__(/*! ./cartvaluechange */ "./resources/js/cartvaluechange.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 Vue.component('main-component', __webpack_require__(/*! ./components/Maincomponent.vue */ "./resources/js/components/Maincomponent.vue")["default"]);
 Vue.component('store-component', __webpack_require__(/*! ./components/Storecomponent.vue */ "./resources/js/components/Storecomponent.vue")["default"]);
@@ -52337,6 +52339,33 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/cartvaluechange.js":
+/*!*****************************************!*\
+  !*** ./resources/js/cartvaluechange.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function decrease(id) {
+  var value = document.getElementById(id).value;
+  value--;
+  document.getElementById(id).value = value;
+  axios["delete"]('/cart/delete/' + id).then(function (res) {
+    console.log(res);
+  });
+}
+
+function increase(id) {
+  var value = document.getElementById(id).value;
+  value++;
+  document.getElementById(id).value = value;
+  axios.put('/cart/' + id).then(function (res) {
+    console.log(res);
+  });
+}
 
 /***/ }),
 

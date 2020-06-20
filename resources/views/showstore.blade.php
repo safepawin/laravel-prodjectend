@@ -18,7 +18,7 @@
             </div>
             @foreach ($product as $item)
                 <div class="col-3 p-3">
-                    <a href="http://projectend.test:8080/product/{{$item->id}}"><img class="img img-fluid" src="{{$item->product_image[0]->product_image}}" alt=""></a>
+                    <a href="http://projectend.test:8080/product/{{$item->id}}"><img class="img img-fluid" src="{{asset('images/'.$item->product_image[0]->product_image)}}" alt=""></a>
                     <p>{{$item->product_name}}</p>
                     <span>
                         ราคา

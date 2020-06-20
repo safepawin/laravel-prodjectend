@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "chart.js": "^2.9.3",
         "vue-infinite-loading": "^2.4.5",
         "vuejs-paginate": "^2.1.0",
         "vuetify": "^2.3.0"

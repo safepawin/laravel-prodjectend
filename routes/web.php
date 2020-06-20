@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\StoreController;
+use App\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -28,5 +30,19 @@ Route::get('/admin', function () {
 
 Route::resource('cart', 'CartController')->middleware('auth');
 Route::delete('cart/delete/{id}', "CartController@decrease")->middleware('auth');
+
+
 Route::resource('product', 'ProductController')->middleware('auth');
+Route::get('product/create/{id}', 'ProductController@createProduct')->middleware('auth')->name('product.createProduct');
+
+
 Route::resource('store', 'StoreController');
+Route::get('store/profile/{id}', 'StoreController@storeProfile')->name('store.profile')->middleware('auth');
+Route::get('store/storeEditProduct/{id}/{pid}', 'StoreController@storeEditProduct')->name('store.EditProduct')->middleware('auth');
+Route::post('store/storeEditProduct/{id}/{pid}', 'StoreController@storeEditProductSave')->name('store.EditProductSave')->middleware('auth');
+
+
+
+Route::get('user/profile', 'UserController@userprofile')->name('user.profile');
+Route::put('user/update', 'UserController@userupdate')->name('user.update');
+Route::delete('user/delete/{id}', 'UserController@userdelete')->name('user.delete');

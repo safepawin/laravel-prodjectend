@@ -196,7 +196,7 @@
                             <a class="nav-link font-24" href="/store"><i class="fas fa-store text-danger icon"></i><p class="text-dark">ร้านค้า</p></a>
                         </li>
                         <li class="nav-item text-center ml-5">
-                            <a class="nav-link font-24" href="#"><i class="fas fa-id-badge text-danger icon"></i><p class="text-dark">ร่วมธุรกิจกับเรา</p></a>
+                            <a class="nav-link font-24" href="{{route('store.create')}}"><i class="fas fa-id-badge text-danger icon"></i><p class="text-dark">ร่วมธุรกิจกับเรา</p></a>
                         </li>
                         <li class="nav-item text-center ml-5">
                             <a class="nav-link font-24" href="#"><i class="fas fa-bug text-danger icon"></i><p class="text-dark">แจ้งปัญหา</p></a>
