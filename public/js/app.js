@@ -2015,6 +2015,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+// function getImage(id){
+//      axios.get('http://projectend.test:8080/api/product/productimage/'+id).then(res=>{
+//             console.log('iamges: ',res.data[0].product_image)
+//             return res.data[0].product_image
+//      })
+// }
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     this.getProductFilter();
@@ -2027,14 +2033,15 @@ __webpack_require__.r(__webpack_exports__);
       filters: [],
       products: [],
       filterId: "",
-      sort: false
+      sort: false,
+      img: ''
     };
   },
   methods: {
     getProductAll: function getProductAll() {
       var _this = this;
 
-      axios.get("http://projectend.test:8080/api/product").then(function (result) {
+      axios.get("/api/product").then(function (result) {
         _this.products = result.data;
         console.log(_this.products);
       });
@@ -2042,7 +2049,7 @@ __webpack_require__.r(__webpack_exports__);
     getProductFilter: function getProductFilter() {
       var _this2 = this;
 
-      axios.get("http://projectend.test:8080/api/productfilter").then(function (result) {
+      axios.get("/api/productfilter").then(function (result) {
         _this2.filters = result.data;
         console.log(_this2.filters);
       });
@@ -2051,7 +2058,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       this.filterId = id;
-      axios.put("http://projectend.test:8080/api/productfilter/".concat(id)).then(function (result) {
+      axios.put("/api/productfilter/".concat(id)).then(function (result) {
         _this3.products = result.data;
         console.log(_this3.products);
       });
@@ -2060,7 +2067,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       if (this.search !== "") {
-        axios.get("http://projectend.test:8080/api/product/search/".concat(this.search)).then(function (result) {
+        axios.get("/api/product/search/".concat(this.search)).then(function (result) {
           _this4.products = result.data;
           console.log(_this4.products);
         });
@@ -2071,7 +2078,8 @@ __webpack_require__.r(__webpack_exports__);
     defaultFilter: function defaultFilter() {
       var _this5 = this;
 
-      axios.get("http://projectend.test:8080/api/product").then(function (result) {
+      this.filterId = '';
+      axios.get("/api/product").then(function (result) {
         _this5.products = result.data;
         console.log(_this5.products);
       });
@@ -2079,7 +2087,7 @@ __webpack_require__.r(__webpack_exports__);
     sortLowToHigh: function sortLowToHigh() {
       var _this6 = this;
 
-      axios.get("http://projectend.test:8080/api/product-fliter/asc/".concat(this.filterId)).then(function (result) {
+      axios.get("/productfliter/asc/".concat(this.filterId)).then(function (result) {
         _this6.products = result.data;
         console.log(result.data);
       });
@@ -2087,7 +2095,7 @@ __webpack_require__.r(__webpack_exports__);
     sortHighToLow: function sortHighToLow() {
       var _this7 = this;
 
-      axios.get("http://projectend.test:8080/api/productfliter/desc/".concat(this.filterId)).then(function (result) {
+      axios.get("/productfliter/desc/".concat(this.filterId)).then(function (result) {
         _this7.products = result.data;
         console.log(result.data);
       });
@@ -2228,7 +2236,7 @@ __webpack_require__.r(__webpack_exports__);
     getStoreAll: function getStoreAll() {
       var _this = this;
 
-      axios.get("http://projectend.test:8080/api/store").then(function (result) {
+      axios.get("/api/store").then(function (result) {
         _this.stores = result.data;
         console.log(_this.stores);
       });
@@ -2236,7 +2244,7 @@ __webpack_require__.r(__webpack_exports__);
     getStoreFilter: function getStoreFilter() {
       var _this2 = this;
 
-      axios.get("http://projectend.test:8080/api/storefilter").then(function (result) {
+      axios.get("/api/storefilter").then(function (result) {
         _this2.filters = result.data;
         console.log(_this2.filters);
       });
@@ -2245,7 +2253,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       this.filterId = id;
-      axios.put("http://projectend.test:8080/api/storefilter/".concat(id)).then(function (result) {
+      axios.put("/api/storefilter/".concat(id)).then(function (result) {
         _this3.stores = result.data;
         console.log(_this3.stores);
       });
@@ -2254,7 +2262,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       if (this.search !== "") {
-        axios.get("http://projectend.test:8080/api/store/search/".concat(this.search)).then(function (result) {
+        axios.get("/api/store/search/".concat(this.search)).then(function (result) {
           _this4.stores = result.data;
           console.log(_this4.stores);
         });
@@ -2265,7 +2273,7 @@ __webpack_require__.r(__webpack_exports__);
     defaultFilter: function defaultFilter() {
       var _this5 = this;
 
-      axios.get("http://projectend.test:8080/api/storefilter").then(function (result) {
+      axios.get("/api/storefilter").then(function (result) {
         _this5.stores = result.data;
         console.log(_this5.stores);
       });
@@ -37728,6 +37736,25 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/thai-baht-text/thai-baht-text.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/thai-baht-text/thai-baht-text.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * @author Jirachai Chansivanon <antronic.inc@gmail.com>
+ * @see {@link https://github.com/antronic/that-baht-text-js|GitHub}
+ */ // options
+var MAX_POSITION=6;var UNIT_POSITION=0;var TEN_POSITION=1;var PRIMARY_UNIT="\u0E1A\u0E32\u0E17";var SECONDARY_UNIT="\u0E2A\u0E15\u0E32\u0E07\u0E04\u0E4C";var WHOLE_NUMBER_TEXT="\u0E16\u0E49\u0E27\u0E19";var NUMBER_TEXTS="\u0E28\u0E39\u0E19\u0E22\u0E4C,\u0E2B\u0E19\u0E36\u0E48\u0E07,\u0E2A\u0E2D\u0E07,\u0E2A\u0E32\u0E21,\u0E2A\u0E35\u0E48,\u0E2B\u0E49\u0E32,\u0E2B\u0E01,\u0E40\u0E08\u0E47\u0E14,\u0E41\u0E1B\u0E14,\u0E40\u0E01\u0E49\u0E32,\u0E2A\u0E34\u0E1A".split(",");var UNIT_TEXTS="\u0E2A\u0E34\u0E1A,\u0E23\u0E49\u0E2D\u0E22,\u0E1E\u0E31\u0E19,\u0E2B\u0E21\u0E37\u0E48\u0E19,\u0E41\u0E2A\u0E19,\u0E25\u0E49\u0E32\u0E19".split(",");var getIntegerDigits=function getIntegerDigits(numberInput){return parseInt(numberInput.split(".")[0],10).toString()};var getFractionalDigits=function getFractionalDigits(numberInput){return parseInt(numberInput.split(".")[1],10).toString()};var hasFractionalDigits=function hasFractionalDigits(numberInput){return numberInput!==undefined&&numberInput!="0"};var isZeroValue=function isZeroValue(number){return number==0};var isUnitPosition=function isUnitPosition(position){return position==UNIT_POSITION};var isTenPosition=function isTenPosition(position){return position%MAX_POSITION==TEN_POSITION};var isMillionsPosition=function isMillionsPosition(position){return position>=MAX_POSITION&&position%MAX_POSITION==0};var isLastPosition=function isLastPosition(position,lengthOfDigits){return position+1<lengthOfDigits};var reverseNumber=function reverseNumber(number){var numberStr=number.toString();return numberStr.split("").reverse().join("")};var getBathUnit=function getBathUnit(position,number){var unitText="";if(!isUnitPosition(position)){unitText=UNIT_TEXTS[Math.abs(position-1)%MAX_POSITION]}if(isZeroValue(number)&&!isMillionsPosition(position)){unitText=""}return unitText};var getBathText=function getBathText(position,number,lengthOfDigits){var numberText=NUMBER_TEXTS[number];if(isZeroValue(number)){return""}if(isTenPosition(position)&&number==1){numberText=""}if(isTenPosition(position)&&number==2){numberText="\u0E22\u0E35\u0E48"}if(isMillionsPosition(position)&&isLastPosition(position,lengthOfDigits)&&number==1){numberText="\u0E40\u0E2D\u0E47\u0E14"}if(lengthOfDigits==2&&isLastPosition(position,lengthOfDigits)&&number==1){numberText="\u0E40\u0E2D\u0E47\u0E14"}if(lengthOfDigits>1&&isUnitPosition(position)&&number==1){numberText="\u0E40\u0E2D\u0E47\u0E14"}return numberText};// convert function without async
+var convert=function convert(numberInput){var numberReverse=reverseNumber(numberInput);var textOutput="";// console.log('>', numberReverse.split(''))
+numberReverse.split("").forEach(function(number,i){textOutput="".concat(getBathText(i,number,numberReverse.length)).concat(getBathUnit(i,number)).concat(textOutput)});return textOutput};var parseFloatWithPrecision=function parseFloatWithPrecision(number){var precision=arguments.length>1&&arguments[1]!==undefined?arguments[1]:2;var numberFloatStr=parseFloat(number).toString().split(".");var integerUnitStr=numberFloatStr[0];var fractionalUnitStr=numberFloatStr.length==2?numberFloatStr[1].substring(0,precision):"00";return parseFloat("".concat(integerUnitStr,".").concat(fractionalUnitStr)).toFixed(precision)};var convertFullMoney=function convertFullMoney(numberInput){var numberStr=parseFloatWithPrecision(numberInput);var integerDigits=getIntegerDigits(numberStr);var fractionalDigits=getFractionalDigits(numberStr);var intTextOutput=convert(integerDigits);var textOutput=[];if(intTextOutput){textOutput.push("".concat([intTextOutput,PRIMARY_UNIT].join("")))}if(intTextOutput&&!hasFractionalDigits(fractionalDigits)){textOutput.push(WHOLE_NUMBER_TEXT)}if(hasFractionalDigits(fractionalDigits)&&convert(fractionalDigits)){textOutput.push("".concat([convert(fractionalDigits),SECONDARY_UNIT].join("")))}return textOutput.join("")};if( true&&typeof module.exports!=="undefined"){module.exports=convertFullMoney;exports["default"]=convertFullMoney;exports.THBText=convertFullMoney}else{window.THBText=convertFullMoney}
+
+
+/***/ }),
+
 /***/ "./node_modules/timers-browserify/main.js":
 /*!************************************************!*\
   !*** ./node_modules/timers-browserify/main.js ***!
@@ -38008,24 +38035,16 @@ var render = function() {
                   "div",
                   { key: product.id, staticClass: "col-3 p-3" },
                   [
-                    _c(
-                      "a",
-                      {
+                    _c("a", { attrs: { href: "product/" + product.id } }, [
+                      _c("img", {
                         attrs: {
-                          href:
-                            "http://projectend.test:8080/product/" + product.id
+                          width: "180",
+                          height: "120",
+                          src: "images/" + product.preview_image,
+                          alt: "product"
                         }
-                      },
-                      [
-                        _c("img", {
-                          staticClass: "img img-fluid",
-                          attrs: {
-                            src: "https://via.placeholder.com/300x200",
-                            alt: ""
-                          }
-                        })
-                      ]
-                    ),
+                      })
+                    ]),
                     _vm._v(" "),
                     _c("p", [_vm._v(_vm._s(product.product_name))]),
                     _vm._v(" "),
@@ -38150,23 +38169,15 @@ var render = function() {
               _vm._v(" "),
               _vm._l(_vm.stores, function(store) {
                 return _c("div", { key: store.id, staticClass: "col-3 p-3" }, [
-                  _c(
-                    "a",
-                    {
+                  _c("a", { attrs: { href: "/store/" + store.id } }, [
+                    _c("img", {
+                      staticClass: "img img-fluid",
                       attrs: {
-                        href: "http://projectend.test:8080/store/" + store.id
+                        src: "https://via.placeholder.com/300x200",
+                        alt: ""
                       }
-                    },
-                    [
-                      _c("img", {
-                        staticClass: "img img-fluid",
-                        attrs: {
-                          src: "https://via.placeholder.com/300x200",
-                          alt: ""
-                        }
-                      })
-                    ]
-                  ),
+                    })
+                  ]),
                   _vm._v(" "),
                   _c("p", [_vm._v(_vm._s(store.store_name))]),
                   _vm._v(" "),
@@ -52289,6 +52300,9 @@ __webpack_require__(/*! ../dist/js/adminlte */ "./resources/dist/js/adminlte.js"
 __webpack_require__(/*! ./cartvaluechange */ "./resources/js/cartvaluechange.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
+var THBText = __webpack_require__(/*! thai-baht-text */ "./node_modules/thai-baht-text/thai-baht-text.js");
+
 Vue.component('main-component', __webpack_require__(/*! ./components/Maincomponent.vue */ "./resources/js/components/Maincomponent.vue")["default"]);
 Vue.component('store-component', __webpack_require__(/*! ./components/Storecomponent.vue */ "./resources/js/components/Storecomponent.vue")["default"]);
 var app = new Vue({

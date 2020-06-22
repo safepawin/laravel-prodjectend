@@ -19,3 +19,7 @@
     </div>
 </div>
 @endsection --}}
+
+@section('content')
+    <main-component/>
+@endsection

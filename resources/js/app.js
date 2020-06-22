@@ -8,7 +8,7 @@ require('./bootstrap');
 require('../dist/js/adminlte');
 require('./cartvaluechange');
 window.Vue = require('vue');
-
+const THBText = require('thai-baht-text')
 Vue.component('main-component', require('./components/Maincomponent.vue').default);
 Vue.component('store-component', require('./components/Storecomponent.vue').default);
 

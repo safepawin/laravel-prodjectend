@@ -89,6 +89,10 @@ class ProductFilterController extends Controller
     }
     public function sortProducts($sort, $id = null)
     {
+        if($id == null){
+            $products = Product::orderBy('product_price', $sort)->get();
+            return response()->json($products);
+        }
         $products = Product::where('category_id', $id)->orderBy('product_price', $sort)->get();
         return response()->json($products);
     }

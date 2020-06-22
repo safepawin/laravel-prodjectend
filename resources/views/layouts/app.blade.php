@@ -10,14 +10,14 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ secure_asset('js/app.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    @yield('header')
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
 
     <style>
         .font-24{
@@ -163,12 +163,13 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a>
+                                    <a class="dropdown-item" href="{{route('user.order')}}">เช็ค Order</a>
+                                    <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
@@ -220,7 +221,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 text-center my-lg-auto mb-5">
-                    <a class="btn btn-danger px-md-5 px-sm-3 py-2 my-auto rigisterButtom" href="">สมัครสมาชิกที่นี่</a>
+                    <a class="btn btn-danger px-md-5 px-sm-3 py-2 my-auto rigisterButtom" href="{{route('register')}}">สมัครสมาชิกที่นี่</a>
                 </div>
             </div>
             <div class="row bg-danger border-bottom border-dark">

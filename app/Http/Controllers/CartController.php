@@ -49,6 +49,8 @@ class CartController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
+
+
         \Cart::session(Auth::id())->add(array(
             'id' => $product->id,
             'name' => $product->product_name,
@@ -79,12 +81,24 @@ class CartController extends Controller
     public function update(Request $request, $id)
     {
         $product = Product::find($id);
-        \Cart::session(Auth::id())->update($id, [
-            'quantity' => 1,
-            'price' => $product->product_price,
-            'relative' => false
-        ]);
-        return \Cart::session(Auth::id())->getTotal();
+        $cartcontent = \Cart::session(Auth::id())->getContent()->get($id);
+
+        if($cartcontent->quantity < $product->product_quantity){
+            \Cart::session(Auth::id())->update($id, [
+                'quantity' => 1,
+                'price' => $product->product_price,
+                'relative' => false
+                ]);
+            return [$cartcontent,\Cart::session(Auth::id())->getTotal()];
+        }else{
+            \Cart::session(Auth::id())->update($id, [
+                'quantity' => 0,
+                'price' => $product->product_price,
+                'relative' => false
+            ]);
+            return [$cartcontent,\Cart::session(Auth::id())->getTotal()];
+        }
+
     }
 
     /**
@@ -100,11 +114,22 @@ class CartController extends Controller
     }
     public function decrease($id){
         $product = Product::find($id);
-        \Cart::session(Auth::id())->update($id, [
-            'quantity' => -1,
-            'price' => $product->product_price,
-            'relative' => false
-        ]);
-        return \Cart::session(Auth::id())->getTotal();
+        $cartcontent = \Cart::session(Auth::id())->getContent()->get($id);
+        if($cartcontent->quantity <= 0){
+            \Cart::session(Auth::id())->update($id, [
+                'quantity' => 1,
+                'price' => $product->product_price,
+                'relative' => true
+                ]);
+            return [$cartcontent,\Cart::session(Auth::id())->getTotal()];
+        }else{
+            \Cart::session(Auth::id())->update($id, [
+                'quantity' => -1,
+                'price' => $product->product_price,
+                'relative' => false
+                ]);
+            return [$cartcontent,\Cart::session(Auth::id())->getTotal()];
+        }
+
     }
 }

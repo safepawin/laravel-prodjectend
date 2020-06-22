@@ -85,7 +85,7 @@
               </div>
             </div>
             <div class="col-3 p-3" v-for="store in stores" :key="store.id">
-              <a :href="'http://projectend.test:8080/store/'+store.id">
+              <a :href="'/store/'+store.id">
                 <img class="img img-fluid" src="https://via.placeholder.com/300x200" alt />
               </a>
               <p>{{store.store_name}}</p>
@@ -113,13 +113,13 @@ export default {
   },
   methods: {
     getStoreAll() {
-      axios.get("http://projectend.test:8080/api/store").then(result => {
+      axios.get("/api/store").then(result => {
         this.stores = result.data;
         console.log(this.stores);
       });
     },
     getStoreFilter() {
-      axios.get("http://projectend.test:8080/api/storefilter").then(result => {
+      axios.get("/api/storefilter").then(result => {
         this.filters = result.data;
         console.log(this.filters);
       });
@@ -127,7 +127,7 @@ export default {
     checkFilter(id) {
       this.filterId = id;
       axios
-        .put(`http://projectend.test:8080/api/storefilter/${id}`)
+        .put(`/api/storefilter/${id}`)
         .then(result => {
           this.stores = result.data;
           console.log(this.stores);
@@ -136,7 +136,7 @@ export default {
     searchStore() {
       if (this.search !== "") {
         axios
-          .get(`http://projectend.test:8080/api/store/search/${this.search}`)
+          .get(`/api/store/search/${this.search}`)
           .then(result => {
             this.stores = result.data;
             console.log(this.stores);
@@ -146,7 +146,7 @@ export default {
       }
     },
     defaultFilter() {
-      axios.get("http://projectend.test:8080/api/storefilter").then(result => {
+      axios.get("/api/storefilter").then(result => {
         this.stores = result.data;
         console.log(this.stores);
       });

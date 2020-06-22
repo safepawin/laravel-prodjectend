@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Product;
+use App\Product_image;
 
 class ProductController extends Controller
 {
@@ -87,6 +88,11 @@ class ProductController extends Controller
     }
     public function searchProduct($name){
         $product = Product::Where('product_name','like', '%'.$name.'%')->get();
+        return response()->json($product);
+    }
+
+    public function getProductImage($id){
+        $product = Product::find($id)->product_image;
         return response()->json($product);
     }
 }

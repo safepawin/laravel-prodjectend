@@ -12,7 +12,7 @@
                             <div class="text-center">
                                 <a class="" href="{{route('store.profile',$item->id)}}"><img class="img img-fluid text-center" src="{{$item->store_image}}" alt=""></a>
                             </div>
-                            <p class="text-center pt-2"><b>{{$item->store_name}}</b></p>
+                            <p class="text-center pt-2"><b><a href="{{route('store.profile',$item->id)}}">{{$item->store_name}}</a></b></p>
                         </div>
                     @endforeach
                         <div class="col-12 border-bottom mb-2"></div>

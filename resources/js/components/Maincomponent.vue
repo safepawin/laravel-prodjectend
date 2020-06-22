@@ -85,10 +85,10 @@
               </div>
             </div>
             <div class="col-3 p-3" v-for="product in products" :key="product.id">
-              <a :href="'http://projectend.test:8080/product/'+product.id">
-                <img class="img img-fluid" src="https://via.placeholder.com/300x200" alt />
+              <a :href="'product/'+product.id">
+                <img width="180" height="120" :src="'images/'+product.preview_image" alt="product" />
               </a>
-              <p>{{product.product_name}}</p>
+              <p>{{product.product_name }}</p>
               <span>
                 ราคา
                 <b>{{product.product_price}}</b>
@@ -106,6 +106,12 @@
 </template>
 
 <script>
+// function getImage(id){
+//      axios.get('http://projectend.test:8080/api/product/productimage/'+id).then(res=>{
+//             console.log('iamges: ',res.data[0].product_image)
+//             return res.data[0].product_image
+//      })
+// }
 export default {
   mounted() {
     this.getProductFilter();
@@ -113,18 +119,18 @@ export default {
     console.log("mounted");
   },
   data() {
-    return { search: "", filters: [], products: [], filterId: "", sort: false };
+    return { search: "", filters: [], products: [], filterId: "", sort: false,img:'' };
   },
   methods: {
     getProductAll() {
-      axios.get("http://projectend.test:8080/api/product").then(result => {
+      axios.get("/api/product").then(result => {
         this.products = result.data;
         console.log(this.products);
       });
     },
     getProductFilter() {
       axios
-        .get("http://projectend.test:8080/api/productfilter")
+        .get("/api/productfilter")
         .then(result => {
           this.filters = result.data;
           console.log(this.filters);
@@ -133,7 +139,7 @@ export default {
     checkFilter(id) {
       this.filterId = id;
       axios
-        .put(`http://projectend.test:8080/api/productfilter/${id}`)
+        .put(`/api/productfilter/${id}`)
         .then(result => {
           this.products = result.data;
           console.log(this.products);
@@ -142,7 +148,7 @@ export default {
     searchProduct() {
       if (this.search !== "") {
         axios
-          .get(`http://projectend.test:8080/api/product/search/${this.search}`)
+          .get(`/api/product/search/${this.search}`)
           .then(result => {
             this.products = result.data;
             console.log(this.products);
@@ -152,7 +158,8 @@ export default {
       }
     },
     defaultFilter() {
-      axios.get("http://projectend.test:8080/api/product").then(result => {
+        this.filterId = ''
+      axios.get("/api/product").then(result => {
         this.products = result.data;
         console.log(this.products);
       });
@@ -160,7 +167,7 @@ export default {
     sortLowToHigh() {
       axios
         .get(
-          `http://projectend.test:8080/api/product-fliter/asc/${this.filterId}`
+          `/productfliter/asc/${this.filterId}`
         )
         .then(result => {
           this.products = result.data;
@@ -170,7 +177,7 @@ export default {
     sortHighToLow() {
       axios
         .get(
-          `http://projectend.test:8080/api/productfliter/desc/${this.filterId}`
+          `/productfliter/desc/${this.filterId}`
         )
         .then(result => {
           this.products = result.data;

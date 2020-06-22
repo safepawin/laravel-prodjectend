@@ -70,6 +70,8 @@ class StoreController extends Controller
             'address'=> $address->id
         ]);
 
+        return view('createstore')->with('user',Auth::user());
+
         //return dd(User::find(Auth::id()));
 
     }

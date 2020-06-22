@@ -4,7 +4,7 @@
     <div class="container ">
         <div class="row">
             <div class="col-6">
-                <img class="img img-fluid img-thumbnail" src="https://via.placeholder.com/400x300" alt="">
+                <img class="img img-fluid img-thumbnail" src="{{'/images/'.$data->preview_image}}" alt="">
             </div>
             <div class="col-6">
                 <div class="row">
@@ -40,7 +40,7 @@
             </div>
             @foreach ($data->product_image as $item)
                 <div class="col-4 mb-3">
-                    <img class="img img-fluid img-thumbnail " src="{{$item->product_image}}" alt="">
+                    <img height="200" src="{{'/images/'.$item->product_image}}" alt="">
                 </div>
             @endforeach
         </div>

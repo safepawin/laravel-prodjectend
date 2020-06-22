@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/admin', function () {
     return view("admin.home");
 });
@@ -46,3 +46,8 @@ Route::post('store/storeEditProduct/{id}/{pid}', 'StoreController@storeEditProdu
 Route::get('user/profile', 'UserController@userprofile')->name('user.profile');
 Route::put('user/update', 'UserController@userupdate')->name('user.update');
 Route::delete('user/delete/{id}', 'UserController@userdelete')->name('user.delete');
+Route::get('user/userOrder','UserController@userOrder')->name('user.order');
+Route::get('user/orderdetail/{id}','UserController@orderDetail')->name('user.orderdetail');
+
+
+Route::resource('checkout', 'CheckoutController');

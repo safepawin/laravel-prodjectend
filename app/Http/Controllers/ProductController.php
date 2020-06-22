@@ -61,13 +61,17 @@ class ProductController extends Controller
         foreach($request->images as $image)
             {
                 $name = date('YmdHis').$image->getClientOriginalName();
-                $image->move(public_path().'/images/'.Store::find($request->store)->store_name, $name);
-                $product_iamge = Product_image::create([
+                $image->move(public_path().'/images/'.Store::find($request->store)->store_name.'/'.$product->product_name, $name);
+                $product_image = Product_image::create([
                     'product_image_name'=>$name,
-                    'product_image'=>Store::find($request->store)->store_name.'/'.$name,
+                    'product_image'=>Store::find($request->store)->store_name.'/'.$product->product_name.'/'.$name,
                     'product_id'=>$product->id
                 ]);
             }
+            $updatedimage = Product::find($product->id)->update([
+                'preview_image' => $product_image->product_image
+            ]);
+            // dd($updatedimage);
             session()->flash('success','เพิ่มสินค้าสำเร็จ');
             return redirect(route('store.profile',$request->store));
     }

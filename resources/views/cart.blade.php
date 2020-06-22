@@ -4,7 +4,7 @@
 <div class="container">
     <div class="card shopping-cart">
       <div class="card-header bg-dark ">
-        <button class="btn text-white btn-outline" onclick="window.history.back()"><i class="fas fa-less-than text-white pr-1"></i>Back</button>
+        <button class="btn text-danger btn-outline" onclick="window.history.back()"><i class="fas fa-less-than text-danger pr-1"></i>Back</button>
         <i class="fa fa-shopping-cart ml-2" aria-hidden="true"></i>
         <span>Shipping cart</span>
         <div class="clearfix"></div>
@@ -17,7 +17,7 @@
                     <div class="col-12 col-sm-12 col-md-2 text-center">
                     <img
                         class="img-responsive"
-                        src="{{$item->attributes->images->product_image}}"
+                        src="{{'/images/'.$item->attributes->images->product_image}}"
                         alt="prewiew"
                         width="120"
                         height="80"
@@ -27,6 +27,7 @@
                     <h4 class="product-name">
                         <strong>{{$item->name}}</strong>
                     </h4>
+                    <p id="price{{$item->id}}">{{$item->price * $item->quantity}} บาท</p>
                     <h4>
                         <small>{{$item->product_detail}}</small>
                     </h4>
@@ -92,7 +93,7 @@
           </div>
         </div>-->
         <div class="text-right" style="margin: 10px">
-          <a href class="btn btn-success text-right">Checkout</a>
+          <a href="{{route('checkout.index')}}" class="btn btn-success text-right">Checkout</a>
           <div class="text-right" style="margin: 5px">
             Total price:
             <b id="totalPrice">{{Cart::session(Auth::id())->getTotal()}}</b>
@@ -107,24 +108,27 @@
 
 
 <script>
+    function increase(id){
+    let value = document.getElementById(id).value ;
+        axios.put('/cart/'+id).then(res=>{
+            document.getElementById('price'+id).innerHTML = res.data[0].quantity * res.data[0].price + ' บาท'
+            document.getElementById('totalPrice').innerHTML = res.data[1]
+            value = res.data[0].quantity
+            document.getElementById(id).value = value;
+            console.log(res)
+        })
+    }
+
     function decrease(id){
     let value = document.getElementById(id).value ;
-    value--
     document.getElementById(id).value = value;
-    axios.delete('/cart/delete/'+id).then(res=>{
-        document.getElementById('totalPrice').innerHTML = res.data;
-        console.log(res)
-    })
-}
-
-function increase(id){
-    let value = document.getElementById(id).value ;
-    value++
-    document.getElementById(id).value = value;
-    axios.put('/cart/'+id).then(res=>{
-        document.getElementById('totalPrice').innerHTML = res.data;
-        console.log(res)
-    })
-}
+        axios.delete('/cart/delete/'+id).then(res=>{
+            document.getElementById('price'+id).innerHTML = res.data[0].quantity * res.data[0].price + ' บาท'
+            document.getElementById('totalPrice').innerHTML = res.data[1]
+            value = res.data[0].quantity
+            document.getElementById(id).value = value;
+            console.log(res)
+        })
+    }
 
 </script>

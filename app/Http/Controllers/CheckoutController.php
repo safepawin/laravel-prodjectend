@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
+use App\Order_detail;
+use App\Store;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
@@ -13,7 +17,7 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        //
+        return view('checkout');
     }
 
     /**
@@ -34,7 +38,29 @@ class CheckoutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $carts = \Cart::session(Auth::id())->getContent();
+        $name = date('YmdHis').$request->billimage->getClientOriginalName();
+        $request->billimage->move(public_path().'/images/'.Auth::id().'/'.'bill/', $name);
+        $order = Order::create([
+            'order_total'=>$request->total,
+            'order_status'=>1,
+            'user_id'=>Auth::id(),
+            'bill_image'=>Auth::id().'/'.'bill/'.$name,
+            'address_id'=> $request->address,
+            'billcode'=> Auth::id().date('YmdHis')
+        ]);
+
+        foreach($carts as $cart){
+            $order_detail = Order_detail::create([
+                'product_id'=>$cart->id,
+                'product_price'=>$cart->price,
+                'order_quantity'=>$cart->quantity,
+                'order_total_unit'=>$cart->price * $cart->quantity,
+                'order_id'=>$order->id
+            ]);
+        }
+
+        return redirect(route('user.order'));   //ลิ้งไป ที่ user > order
     }
 
     /**

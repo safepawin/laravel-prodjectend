@@ -1,6 +1,10 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
+@import url('https://fonts.googleapis.com/css?family=Sriracha&display=swap');
+* {
+    font-family: 'Sriracha', cursive;
+    scroll-behavior: smooth;
+  }
 // Variables
 @import 'variables';
 

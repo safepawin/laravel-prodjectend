@@ -27,6 +27,7 @@ Route::resource('category', 'Api\CategoryController');
 //products
 Route::resource('product', 'Api\ProductController');
 Route::get('product/search/{name}', 'Api\ProductController@searchProduct')->name('product.search');
+Route::get('product/productimage/{id}','Api\ProductController@getProductImage')->name('product.getImage');
 //cart
 //stores
 Route::resource('store', 'Api\StoreController');
