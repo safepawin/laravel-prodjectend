@@ -10,7 +10,7 @@
                     @foreach ($user->store as $item)
                         <div class="col-3">
                             <div class="text-center">
-                                <a class="" href="{{route('store.profile',$item->id)}}"><img class="img img-fluid text-center" src="{{$item->store_image}}" alt=""></a>
+                                <a class="" href="{{route('store.profile',$item->id)}}"><img class="img img-fluid text-center" src="{{'/images/'.$item->store_image}}" alt=""></a>
                             </div>
                             <p class="text-center pt-2"><b><a href="{{route('store.profile',$item->id)}}">{{$item->store_name}}</a></b></p>
                         </div>

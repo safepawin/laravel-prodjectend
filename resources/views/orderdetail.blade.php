@@ -18,11 +18,11 @@
                     <tbody>
                         @foreach ($orderdetail as $item)
                         <tr class="text-center">
-                            <td>{{$item->product->product_name}}</td>
+                            <td>{{$item->product_name}}</td>
                             <td>{{$item->product_price}}</td>
                             <td>{{$item->order_quantity}}</td>
                             <td>{{$item->order_total_unit}}</td>
-                            <td>{{$item->product->store->store_name}}</td>
+                            <td>{{$item->store->store_name}}</td>
                             <td>{{$item->order->billcode}}</td>
                         </tr>
                         @endforeach

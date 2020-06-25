@@ -48,7 +48,7 @@
         <ul class="navbar-nav ml-auto">
 
           <li class="nav-item">
-            <a class="nav-link" onclick="window.history.back()" role="button"><i class="fas fa-shopping-basket text-danger mr-2"></i><b>กลับ</b></a>
+            <a class="nav-link" href="/" role="button"><i class="fas fa-shopping-basket text-danger mr-2"></i><b>กลับ</b></a>
           </li>
           {{-- <li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
@@ -61,9 +61,9 @@
       <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
-          <img src="{{Auth::user()->store->find($id)->store_image}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-               style="opacity: .8">
+        <a href="{{route('store.edit',$id)}}" class="brand-link">
+          {{-- <img src="{{.Auth::user()->store->find($id)->store_image}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+               style="opacity: .8"> --}}
           <span class="brand-text font-weight-light">{{Auth::user()->store->find($id)->store_name}}</span>
         </a>
 
@@ -72,7 +72,7 @@
           <!-- Sidebar user panel (optional) -->
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-              <img src="{{Auth::user()->store->find($id)->store_image}}" class="img-circle elevation-2" alt="User Image">
+              <img src="{{'/images/'.Auth::user()->store->find($id)->store_image}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
               <a href="#" class="d-block">{{Auth::user()->firstname}} {{Auth::user()->lastname}} </a>

@@ -17,13 +17,13 @@
         data.addColumn('string', 'Topping');
         data.addColumn('number', 'Slices');
         data.addRows([
-            @foreach ($product as $item)
-          ['{{$item->product_name}}', {{$item->product_price}}],
+            @foreach ($order_detail as $item)
+          ['{{$item->product_name}}', {{$item->order_quantity}}],
             @endforeach
         ]);
 
         // Set chart options
-        var options = {'title':'สินค้าที่ผู้ใช้นิยม',
+        var options = {'title':'สินค้าที่ผู้ใช้นิยม 5 รายการที่มีผู้ซื้อบ่อยที่สุด',
                        'width':700,
                        'height':300};
 
@@ -50,6 +50,7 @@
                       @if (Session::has('success'))
                           <p class="alert alert-success text-center">{{Session::get('success')}}</p>
                       @endif
+                      <h3 class="text-right"><a class="text" href="">ดูข้อมูลการขายทั้งหมด</a></h3>
                     {{-- <ol class="breadcrumb float-sm-right">
                       <li class="breadcrumb-item"><a href="#">Home</a></li>
                       <li class="breadcrumb-item active">Starter Page</li>
@@ -72,7 +73,7 @@
                                 {{-- <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button> --}}
                             </div>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body mb-1">
                                 <div id="pieChart" ></div>
                             </div>
                         </div>
@@ -82,34 +83,34 @@
                         <!-- STACKED BAR CHART -->
                         <div class="card card-success">
                         <div class="card-header">
-                            <h3 class="card-title">Table</h3>
-
+                            <h3 class="card-title">ตารางการขาย 5 รายการที่มีผู้ซื้อบ่อยที่สุด</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                                 {{-- <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button> --}}
+
                             </div>
                         </div>
-                        <div class="card-body">
-                            <table class="table w-100">
+                        <div class="card-body mb-3">
+                            <table class="table w-100 ">
                                 <thead>
                                     <tr class="text-center">
-                                        <td>@</td>
-                                        <td>@</td>
-                                        <td>@</td>
-                                        <td>@</td>
-                                        <td>@</td>
-                                        <td>@</td>
+                                        <td>ชื่อสินค้า</td>
+                                        <td>ราคา</td>
+                                        <td>จำนวนที่ขายได้</td>
+                                        <td>ราคารวม</td>
+                                        <td>รายระเอียด</td>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($order_detail as $item)
                                     <tr class="text-center">
-                                        <td>aaaa</td>
-                                        <td>ssss</td>
-                                        <td>dddd</td>
-                                        <td>wwww</td>
-                                        <td>dddd</td>
-                                        <td>dddd</td>
+                                        <td>{{$item->product_name}}</td>
+                                        <td>{{$item->product_price}}</td>
+                                        <td>{{$item->order_quantity}}</td>
+                                        <td>{{$item->order_total_unit}}</td>
+                                        <td><a href=""><i class="fas fa-receipt"></i></a></td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

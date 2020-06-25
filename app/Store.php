@@ -15,4 +15,9 @@ class Store extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function order_detail()
+    {
+        return $this->hasMany(Order_detail::class);
+    }
 }

@@ -84,8 +84,8 @@
                 </div>
               </div>
             </div>
-            <div class="col-3 p-3" v-for="product in products" :key="product.id">
-              <a :href="'product/'+product.id">
+            <div class="col-3 p-3" v-for="product in products" :key="product.id" >
+              <a :href="product.product_quantity >= 1 ? 'product/'+product.id : ''">
                 <img width="180" height="120" :src="'images/'+product.preview_image" alt="product" />
               </a>
               <p>{{product.product_name }}</p>
@@ -95,7 +95,7 @@
               </span>
               <span>
                 คงเหลือ
-                <b>{{product.product_quantity}}</b>
+                <b :class="product.product_quantity >=1 ? '' : 'text-danger'">{{product.product_quantity}}</b>
               </span>
             </div>
           </div>

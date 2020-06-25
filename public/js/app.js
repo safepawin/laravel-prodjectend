@@ -38035,16 +38035,27 @@ var render = function() {
                   "div",
                   { key: product.id, staticClass: "col-3 p-3" },
                   [
-                    _c("a", { attrs: { href: "product/" + product.id } }, [
-                      _c("img", {
+                    _c(
+                      "a",
+                      {
                         attrs: {
-                          width: "180",
-                          height: "120",
-                          src: "images/" + product.preview_image,
-                          alt: "product"
+                          href:
+                            product.product_quantity >= 1
+                              ? "product/" + product.id
+                              : ""
                         }
-                      })
-                    ]),
+                      },
+                      [
+                        _c("img", {
+                          attrs: {
+                            width: "180",
+                            height: "120",
+                            src: "images/" + product.preview_image,
+                            alt: "product"
+                          }
+                        })
+                      ]
+                    ),
                     _vm._v(" "),
                     _c("p", [_vm._v(_vm._s(product.product_name))]),
                     _vm._v(" "),
@@ -38055,7 +38066,14 @@ var render = function() {
                     _vm._v(" "),
                     _c("span", [
                       _vm._v("\n              คงเหลือ\n              "),
-                      _c("b", [_vm._v(_vm._s(product.product_quantity))])
+                      _c(
+                        "b",
+                        {
+                          class:
+                            product.product_quantity >= 1 ? "" : "text-danger"
+                        },
+                        [_vm._v(_vm._s(product.product_quantity))]
+                      )
                     ])
                   ]
                 )

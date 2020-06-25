@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\Order_detail;
+use App\Product;
 use App\Store;
+use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -51,15 +53,22 @@ class CheckoutController extends Controller
         ]);
 
         foreach($carts as $cart){
+            $product = Product::find($cart->id)->first();
+
             $order_detail = Order_detail::create([
-                'product_id'=>$cart->id,
+                'product_name'=>$cart->name,
                 'product_price'=>$cart->price,
                 'order_quantity'=>$cart->quantity,
                 'order_total_unit'=>$cart->price * $cart->quantity,
-                'order_id'=>$order->id
+                'order_id'=>$order->id,
+                'store_id'=>$product->store_id
             ]);
-        }
 
+            $product = Product::find($cart->id);
+            $product->product_quantity = $product->product_quantity - $cart->quantity;
+            $product->save();
+        }
+        \Cart::session(Auth::id())->clear();
         return redirect(route('user.order'));   //ลิ้งไป ที่ user > order
     }
 
