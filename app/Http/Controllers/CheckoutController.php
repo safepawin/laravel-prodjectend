@@ -19,7 +19,7 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        return view('checkout');
+        return view('checkout.checkout');
     }
 
     /**
@@ -53,7 +53,7 @@ class CheckoutController extends Controller
         ]);
 
         foreach($carts as $cart){
-            $product = Product::find($cart->id)->first();
+            $product = Product::find($cart->id);
 
             $order_detail = Order_detail::create([
                 'product_name'=>$cart->name,
@@ -64,7 +64,7 @@ class CheckoutController extends Controller
                 'store_id'=>$product->store_id
             ]);
 
-            $product = Product::find($cart->id);
+            // $product = Product::find($cart->id);
             $product->product_quantity = $product->product_quantity - $cart->quantity;
             $product->save();
         }

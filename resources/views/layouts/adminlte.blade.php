@@ -75,7 +75,7 @@
               <img src="{{'/images/'.Auth::user()->store->find($id)->store_image}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-              <a href="#" class="d-block">{{Auth::user()->firstname}} {{Auth::user()->lastname}} </a>
+              <a href="{{route('store.profile',$id)}}" class="d-block">{{Auth::user()->firstname}} {{Auth::user()->lastname}} </a>
             </div>
           </div>
 

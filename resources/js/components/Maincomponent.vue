@@ -86,7 +86,7 @@
             </div>
             <div class="col-3 p-3" v-for="product in products" :key="product.id" >
               <a :href="product.product_quantity >= 1 ? 'product/'+product.id : ''">
-                <img width="180" height="120" :src="'images/'+product.preview_image" alt="product" />
+                <img class="rounded-lg border" width="180px" height="120px" :src="'images/'+product.preview_image" alt="product" />
               </a>
               <p>{{product.product_name }}</p>
               <span>
@@ -167,7 +167,7 @@ export default {
     sortLowToHigh() {
       axios
         .get(
-          `/productfliter/asc/${this.filterId}`
+          `/api/productfliter/asc/${this.filterId}`
         )
         .then(result => {
           this.products = result.data;
@@ -177,7 +177,7 @@ export default {
     sortHighToLow() {
       axios
         .get(
-          `/productfliter/desc/${this.filterId}`
+          `/api/productfliter/desc/${this.filterId}`
         )
         .then(result => {
           this.products = result.data;

@@ -53,13 +53,13 @@ class UserController extends Controller
     public function userOrder()
     {
         $order = Order::where('user_id',Auth::id())->get();
-        return view('userorder',['order'=>$order]);
+        return view('user.userorder',['order'=>$order]);
     }
 
     public function orderDetail($id)
     {
         $orderdetail = Order_detail::where('order_id',$id)->get();
 
-        return view('orderdetail',['orderdetail'=> $orderdetail]);
+        return view('user.orderdetail',['orderdetail'=> $orderdetail]);
     }
 }

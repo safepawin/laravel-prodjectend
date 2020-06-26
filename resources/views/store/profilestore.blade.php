@@ -50,7 +50,7 @@
                       @if (Session::has('success'))
                           <p class="alert alert-success text-center">{{Session::get('success')}}</p>
                       @endif
-                      <h3 class="text-right"><a class="text" href="">ดูข้อมูลการขายทั้งหมด</a></h3>
+                      <h3 class="text-right"><a class="text" href="{{route('store.ShowAllOrder',$id)}}">ดูข้อมูลการขายทั้งหมด</a></h3>
                     {{-- <ol class="breadcrumb float-sm-right">
                       <li class="breadcrumb-item"><a href="#">Home</a></li>
                       <li class="breadcrumb-item active">Starter Page</li>

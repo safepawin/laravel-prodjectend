@@ -28,7 +28,7 @@ class StoreController extends Controller
      */
     public function index()
     {
-        return view('store');
+        return view('store.store');
     }
 
     /**
@@ -38,7 +38,7 @@ class StoreController extends Controller
      */
     public function create()
     {
-        return view('createstore')->with('user', Auth::user());
+        return view('store.createstore')->with('user', Auth::user());
     }
 
     /**
@@ -75,7 +75,7 @@ class StoreController extends Controller
             'address' => $address->id
         ]);
 
-        return view('createstore')->with('user', Auth::user());
+        return view('store.createstore')->with('user', Auth::user());
 
         //return dd(User::find(Auth::id()));
 
@@ -89,9 +89,9 @@ class StoreController extends Controller
      */
     public function show($id)
     {
-        $store = Store::find($id)->first();
-        $product = Store::find($id)->product()->paginate(8);
-        return view('showstore')->with('store', $store)->with('product', $product);
+        $store = Store::find($id);
+        $product = $store->product()->paginate(8);
+        return view('store.showstore')->with('store', $store)->with('product', $product);
     }
 
     /**
@@ -103,7 +103,7 @@ class StoreController extends Controller
     public function edit($id)
     {
         $store = Store::find($id);
-        return view('editstore', ['store' => $store, 'id' => $id]);
+        return view('store.editstore', ['store' => $store, 'id' => $id]);
     }
 
     /**
@@ -156,32 +156,41 @@ class StoreController extends Controller
         $product = Product::where('store_id', $id)->paginate(6);
         $order_detail = Order_detail::where('store_id', $id)->orderBy('order_quantity', 'desc')->limit(5)->get();
         // $order_detail = Order_detail::selectRaw('select product_name, SUM(order_quantity),store_id,order_id from `order_details` where `store_id` = 10 group by `product_name`')->get();
-        $order_detail = Order_detail::where('store_id', 10)
+        $order_detail = Order_detail::where('store_id', $id)
             ->groupBy('product_name')
             ->orderBy('order_quantity')
             ->selectRaw('SUM(order_details.order_quantity) as order_quantity,product_name,store_id,order_id,Sum(order_total_unit) as order_total_unit,product_price')
             ->get();
         // dd($order_detail);
-        return view('profilestore')->with('id', $id)->with('product', $product)->with('order_detail', $order_detail);
+        return view('store.profilestore')->with('id', $id)->with('product', $product)->with('order_detail', $order_detail);
     }
 
     public function storeEditProduct($id, $pid)
     {
-        $product = Product::find($pid)->first();
+        $product = Product::find($pid);
         $category = Category::all();
-        return view('editproduct', ['product' => $product, 'category' => $category, 'id' => $id]);
+        return view('store.editproduct', ['product' => $product, 'category' => $category, 'id' => $id]);
     }
     public function storeEditProductSave(Request $request, $id, $pid)
     {
+        $name = date('YmdHis').$request->image->getClientOriginalName();
+        $request->image->move(public_path().'/images/'.Store::find($id)->store_name.'/'.$request->product_name, $name);
         $product = Product::find($pid)->update([
             'product_name' => $request->product_name,
             'product_price' => $request->product_price,
             'product_detail' => $request->product_detail,
             'product_status' => $request->product_status,
             'product_quantity' => $request->product_quantity,
-            'category_id' => $request->category
+            'category_id' => $request->category,
+            'preview_image' => Store::find($id)->store_name.'/'.$request->product_name.'/'.$name
         ]);
         session()->flash('success', 'แก้ไขข้อมูลสินค้าเรียบร้อย');
         return redirect('store/profile/' . $id);
+    }
+
+    public function storeShowAllOrder($id)
+    {
+        $order_detail = Order_detail::where('store_id',$id)->get();
+        return view('store.storeshowallorder',['id'=>$id,'order_detail'=>$order_detail]);
     }
 }

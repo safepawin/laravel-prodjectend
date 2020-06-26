@@ -2087,7 +2087,7 @@ __webpack_require__.r(__webpack_exports__);
     sortLowToHigh: function sortLowToHigh() {
       var _this6 = this;
 
-      axios.get("/productfliter/asc/".concat(this.filterId)).then(function (result) {
+      axios.get("/api/productfliter/asc/".concat(this.filterId)).then(function (result) {
         _this6.products = result.data;
         console.log(result.data);
       });
@@ -2095,7 +2095,7 @@ __webpack_require__.r(__webpack_exports__);
     sortHighToLow: function sortHighToLow() {
       var _this7 = this;
 
-      axios.get("/productfliter/desc/".concat(this.filterId)).then(function (result) {
+      axios.get("/api/productfliter/desc/".concat(this.filterId)).then(function (result) {
         _this7.products = result.data;
         console.log(result.data);
       });
@@ -38047,9 +38047,10 @@ var render = function() {
                       },
                       [
                         _c("img", {
+                          staticClass: "rounded-lg border",
                           attrs: {
-                            width: "180",
-                            height: "120",
+                            width: "180px",
+                            height: "120px",
                             src: "images/" + product.preview_image,
                             alt: "product"
                           }

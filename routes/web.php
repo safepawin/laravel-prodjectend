@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+// Route::get('/', 'HomeController@index')->name('home');
 Route::get('/admin', function () {
     return view("admin.home");
 });
@@ -40,7 +40,7 @@ Route::resource('store', 'StoreController');
 Route::get('store/profile/{id}', 'StoreController@storeProfile')->name('store.profile')->middleware('auth');
 Route::get('store/storeEditProduct/{id}/{pid}', 'StoreController@storeEditProduct')->name('store.EditProduct')->middleware('auth');
 Route::post('store/storeEditProduct/{id}/{pid}', 'StoreController@storeEditProductSave')->name('store.EditProductSave')->middleware('auth');
-
+Route::get('store/storeShowAllOrder/{id}','StoreController@storeShowAllOrder')->name('store.ShowAllOrder')->middleware('auth');
 
 
 Route::get('user/profile', 'UserController@userprofile')->name('user.profile');

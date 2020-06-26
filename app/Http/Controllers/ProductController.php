@@ -27,7 +27,7 @@ class ProductController extends Controller
      */
     public function create($id)
     {
-        return view('addproduct');
+        return view('store.addproduct');
     }
 
     /**
@@ -124,6 +124,6 @@ class ProductController extends Controller
     }
     public function createProduct($id){
         $category = Category::all();
-        return view('addproduct',['id' => $id, 'category' => $category]);
+        return view('store.addproduct',['id' => $id, 'category' => $category]);
     }
 }
