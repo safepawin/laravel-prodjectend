@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateOrderDetailsTable extends Migration
+class UpdateStoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class UpdateOrderDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::table('order_details', function (Blueprint $table) {
-            $table->dropColumn('orider_id');
-            $table->string('order_id')->after('order_total');
+        Schema::table('stores', function (Blueprint $table) {
+            $table->string('start_store_at')->after('user_id');
+            $table->string('store_image')->after('start_store_at');
         });
     }
 
@@ -26,7 +26,7 @@ class UpdateOrderDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::table('order_details', function (Blueprint $table) {
+        Schema::table('stores', function (Blueprint $table) {
             //
         });
     }
