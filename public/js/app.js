@@ -2015,6 +2015,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 // function getImage(id){
 //      axios.get('http://projectend.test:8080/api/product/productimage/'+id).then(res=>{
 //             console.log('iamges: ',res.data[0].product_image)
@@ -37967,122 +37970,138 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-9" }, [
-          _c(
-            "div",
-            { staticClass: "row" },
-            [
-              _c("div", { staticClass: "col-12 border-bottom" }, [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-6 mr-auto" }, [
-                    _c("h3", [_vm._v("รายการสินค้า")]),
-                    _vm._v(" "),
-                    _c("p", [
-                      _vm._v("ค้นพบสินค้าจำนวน " + _vm._s(_vm.products.length))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-6 ml-auto" }, [
-                    _c("div", { staticClass: "dropdown text-right" }, [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-secondary dropdown-toggle",
-                          attrs: {
-                            type: "button",
-                            id: "dropdownMenuButton",
-                            "data-toggle": "dropdown",
-                            "aria-haspopup": "true",
-                            "aria-expanded": "false"
-                          }
-                        },
-                        [_vm._v("การจัดเรียง")]
-                      ),
+        _vm.products.length >= 1
+          ? _c("div", { staticClass: "col-9" }, [
+              _c(
+                "div",
+                { staticClass: "row" },
+                [
+                  _c("div", { staticClass: "col-12 border-bottom" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-6 mr-auto" }, [
+                        _c("h3", [_vm._v("รายการสินค้า")]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _vm._v(
+                            "ค้นพบสินค้าจำนวน " + _vm._s(_vm.products.length)
+                          )
+                        ])
+                      ]),
                       _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "dropdown-menu",
-                          attrs: { "aria-labelledby": "dropdownMenuButton" }
-                        },
-                        [
+                      _c("div", { staticClass: "col-6 ml-auto" }, [
+                        _c("div", { staticClass: "dropdown text-right" }, [
                           _c(
                             "button",
                             {
-                              staticClass: "dropdown-item",
-                              on: { click: _vm.sortHighToLow }
+                              staticClass: "btn btn-secondary dropdown-toggle",
+                              attrs: {
+                                type: "button",
+                                id: "dropdownMenuButton",
+                                "data-toggle": "dropdown",
+                                "aria-haspopup": "true",
+                                "aria-expanded": "false"
+                              }
                             },
-                            [_vm._v("ราคาสูงสุด - ต่ำสุด")]
+                            [_vm._v("การจัดเรียง")]
                           ),
                           _vm._v(" "),
                           _c(
-                            "button",
+                            "div",
                             {
-                              staticClass: "dropdown-item",
-                              on: { click: _vm.sortLowToHigh }
+                              staticClass: "dropdown-menu",
+                              attrs: { "aria-labelledby": "dropdownMenuButton" }
                             },
-                            [_vm._v("ราคาต่ำสุด - สูงสุด")]
+                            [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "dropdown-item",
+                                  on: { click: _vm.sortHighToLow }
+                                },
+                                [_vm._v("ราคาสูงสุด - ต่ำสุด")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "dropdown-item",
+                                  on: { click: _vm.sortLowToHigh }
+                                },
+                                [_vm._v("ราคาต่ำสุด - สูงสุด")]
+                              )
+                            ]
                           )
-                        ]
-                      )
+                        ])
+                      ])
                     ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.products, function(product) {
-                return _c(
-                  "div",
-                  { key: product.id, staticClass: "col-3 p-3" },
-                  [
-                    _c(
-                      "a",
-                      {
-                        attrs: {
-                          href:
-                            product.product_quantity >= 1
-                              ? "product/" + product.id
-                              : ""
-                        }
-                      },
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.products, function(product) {
+                    return _c(
+                      "div",
+                      { key: product.id, staticClass: "col-3 p-3" },
                       [
-                        _c("img", {
-                          staticClass: "rounded-lg border",
-                          attrs: {
-                            width: "180px",
-                            height: "120px",
-                            src: "images/" + product.preview_image,
-                            alt: "product"
-                          }
-                        })
+                        _c(
+                          "a",
+                          {
+                            attrs: {
+                              href:
+                                product.product_quantity >= 1
+                                  ? "product/" + product.id
+                                  : ""
+                            }
+                          },
+                          [
+                            _c("img", {
+                              staticClass: "rounded-lg border",
+                              attrs: {
+                                width: "180px",
+                                height: "120px",
+                                src: "images/" + product.preview_image,
+                                alt: "product"
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", [_vm._v(_vm._s(product.product_name))]),
+                        _vm._v(" "),
+                        _c("span", [
+                          _vm._v("\n              ราคา\n              "),
+                          _c("b", [_vm._v(_vm._s(product.product_price))])
+                        ]),
+                        _vm._v(" "),
+                        _c("span", [
+                          _vm._v("\n              คงเหลือ\n              "),
+                          _c(
+                            "b",
+                            {
+                              class:
+                                product.product_quantity >= 1
+                                  ? ""
+                                  : "text-danger"
+                            },
+                            [
+                              _vm._v(
+                                _vm._s(
+                                  product.product_quantity >= 1
+                                    ? product.product_quantity
+                                    : "สินค้าหมด"
+                                )
+                              )
+                            ]
+                          )
+                        ])
                       ]
-                    ),
-                    _vm._v(" "),
-                    _c("p", [_vm._v(_vm._s(product.product_name))]),
-                    _vm._v(" "),
-                    _c("span", [
-                      _vm._v("\n              ราคา\n              "),
-                      _c("b", [_vm._v(_vm._s(product.product_price))])
-                    ]),
-                    _vm._v(" "),
-                    _c("span", [
-                      _vm._v("\n              คงเหลือ\n              "),
-                      _c(
-                        "b",
-                        {
-                          class:
-                            product.product_quantity >= 1 ? "" : "text-danger"
-                        },
-                        [_vm._v(_vm._s(product.product_quantity))]
-                      )
-                    ])
-                  ]
-                )
-              })
-            ],
-            2
-          )
-        ])
+                    )
+                  })
+                ],
+                2
+              )
+            ])
+          : _c("div", { staticClass: "col-9" }, [
+              _c("h1", { staticClass: "text-center" }, [_vm._v("ไม่มีสินค้า")])
+            ])
       ])
     ])
   ])

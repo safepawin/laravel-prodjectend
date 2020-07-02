@@ -12,6 +12,7 @@
                             <th>ที่อยู่ในการจัดส่ง</th>
                             <th>สถานะการจัดส่ง</th>
                             <th>More</th>
+                            <th>ออกใบเสร็จ</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -22,6 +23,7 @@
                             <td>{{$item->address->address}}</td>
                             <td>{{$item->order_status}}</td>
                             <td><a href="orderdetail/{{$item->id}}"><i class="fas fa-search"></i></a></td>
+                            <td><a href="{{route('checkout.show',$item->id)}}"><i class="fas fa-receipt"></i></a></td>
                         </tr>
                         @endforeach
                     </tbody>

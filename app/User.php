@@ -37,6 +37,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $attributes = [
+        'user_type_id' => 1,
+    ];
+
     public function address()
     {
         return $this->hasMany(Address::class);

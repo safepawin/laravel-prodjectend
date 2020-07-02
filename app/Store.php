@@ -20,4 +20,8 @@ class Store extends Model
     {
         return $this->hasMany(Order_detail::class);
     }
+
+    protected $attributes = [
+        'store_image'=> 'default/store.jpg'
+    ];
 }

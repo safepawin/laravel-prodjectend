@@ -55,7 +55,7 @@
             </div>
           </div>
         </div>
-        <div class="col-9">
+        <div class="col-9" v-if="products.length >=1">
           <div class="row">
             <div class="col-12 border-bottom">
               <div class="row">
@@ -95,10 +95,13 @@
               </span>
               <span>
                 คงเหลือ
-                <b :class="product.product_quantity >=1 ? '' : 'text-danger'">{{product.product_quantity}}</b>
+                <b :class="product.product_quantity >=1 ? '' : 'text-danger'">{{product.product_quantity >=1 ? product.product_quantity : 'สินค้าหมด'}}</b>
               </span>
             </div>
           </div>
+        </div>
+        <div class="col-9" v-else>
+            <h1 class="text-center">ไม่มีสินค้า</h1>
         </div>
       </div>
     </div>

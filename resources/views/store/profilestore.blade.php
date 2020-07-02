@@ -108,7 +108,7 @@
                                         <td>{{$item->product_price}}</td>
                                         <td>{{$item->order_quantity}}</td>
                                         <td>{{$item->order_total_unit}}</td>
-                                        <td><a href=""><i class="fas fa-receipt"></i></a></td>
+                                        <td><a href=""><i class="fas fa-book"></i></a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>

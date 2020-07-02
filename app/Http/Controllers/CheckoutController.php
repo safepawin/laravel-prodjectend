@@ -9,7 +9,7 @@ use App\Store;
 use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use PDF;
 class CheckoutController extends Controller
 {
     /**
@@ -80,7 +80,9 @@ class CheckoutController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = Order::find($id);
+        $pdf = PDF::loadView('checkout.checkoutpdf',['order'=> $order]);
+        return $pdf->stream($order->billcode.'.pdf');
     }
 
     /**

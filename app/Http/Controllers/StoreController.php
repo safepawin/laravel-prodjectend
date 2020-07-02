@@ -75,7 +75,7 @@ class StoreController extends Controller
             'address' => $address->id
         ]);
 
-        return view('store.createstore')->with('user', Auth::user());
+        return redirect(route('store.create'));
 
         //return dd(User::find(Auth::id()));
 
