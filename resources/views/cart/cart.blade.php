@@ -23,8 +23,8 @@
                         height="80"
                     />
                     </div>
-                    <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-                    <h4 class="product-name">
+                    <div class="col-12 text-center col-sm-12 text-md-left col-md-6">
+                    <h4 class="product-name pt-2">
                         <strong>{{$item->name}}</strong>
                     </h4>
                     <p id="price{{$item->id}}">{{$item->price * $item->quantity}} บาท</p>
@@ -32,7 +32,7 @@
                         <small>{{$item->product_detail}}</small>
                     </h4>
                     </div>
-                    <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+                    <div class="col-12 col-sm-12 text-center col-md-4 text-md-right row">
                     <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
                         <h6>
                         <strong>
@@ -41,7 +41,7 @@
                         </strong>
                         </h6>
                     </div>
-                    <div class="col-4 col-sm-4 col-md-4">
+                    <div class="col-4 col-sm-4 col-md-4 mx-auto">
                         <div class="quantity">
                         <input type="button" value="+" class="plus" onclick="increase({{$item->id}})"/>
                         <input

@@ -21,7 +21,7 @@
     </nav>
     <div class="container mt-5">
       <div class="row">
-        <div class="col-3">
+        <div class="col-lg-3 col-sm-12">
           <div class="card">
             <div class="card-header">
               <h3>ประเภทสินค้า</h3>
@@ -55,21 +55,21 @@
             </div>
           </div>
         </div>
-        <div class="col-9" v-if="products.length >=1">
+        <div class="col-lg-9 col-sm-12" v-if="products.length >=1">
           <div class="row">
             <div class="col-12 border-bottom">
               <div class="row">
-                <div class="col-6 mr-auto">
+                <div class="col-lg-6 col-sm-6 mr-auto">
                   <h3>รายการสินค้า</h3>
                   <p>ค้นพบสินค้าจำนวน {{products.length}}</p>
                 </div>
-                <div class="col-6 ml-auto">
+                <div class="col-lg-6 col-sm-6 ml-auto">
                   <!-- <button class="btn" @click="toggleSort()">
                     <i :class="{'fas fa-sort-amount-down':sort,'fas fa-sort-amount-up':!sort}"></i>
                   </button>-->
                   <div class="dropdown text-right">
                     <button
-                      class="btn btn-secondary dropdown-toggle"
+                      class="btn btn-secondary dropdown-toggle mb-2"
                       type="button"
                       id="dropdownMenuButton"
                       data-toggle="dropdown"
@@ -84,9 +84,9 @@
                 </div>
               </div>
             </div>
-            <div class="col-3 p-3" v-for="product in products" :key="product.id" >
+            <div class="col-lg-3 col-6 p-3" v-for="product in products" :key="product.id" >
               <a :href="product.product_quantity >= 1 ? 'product/'+product.id : ''">
-                <img class="rounded-lg border" width="180px" height="120px" :src="'images/'+product.preview_image" alt="product" />
+                <img class="rounded-lg border w-100" width="180px" height="120px" :src="'images/'+product.preview_image" alt="product" />
               </a>
               <p>{{product.product_name }}</p>
               <span>

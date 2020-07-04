@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function userprofile(){
-        return view('profileuser',['user'=>Auth::user()]);
+        return view('user.profileuser',['user'=>Auth::user()]);
     }
     public function userupdate(Request $request){
         $userId = Auth::id();

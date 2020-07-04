@@ -24,8 +24,7 @@
 
         // Set chart options
         var options = {'title':'สินค้าที่ผู้ใช้นิยม 5 รายการที่มีผู้ซื้อบ่อยที่สุด',
-                       'width':700,
-                       'height':300};
+                       };
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('pieChart'));
@@ -74,7 +73,7 @@
                             </div>
                             </div>
                             <div class="card-body mb-1">
-                                <div id="pieChart" ></div>
+                                <div class="w-100" id="pieChart" ></div>
                             </div>
                         </div>
                             <!-- /.card-body -->

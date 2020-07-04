@@ -3,8 +3,8 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <table class="table table-bordered">
+            <div class="col-lg-12">
+                <table class="table table-bordered table-responsive-sm">
                     <thead>
                         <tr class="text-center">
                             <th>ชื่อสินค้า</th>

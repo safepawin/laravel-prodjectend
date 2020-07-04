@@ -128,11 +128,11 @@
                 {{-- <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a> --}}
-                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                {{-- <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
-                </button>
+                </button> --}}
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class=" navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
@@ -149,11 +149,11 @@
                                 <a class="nav-link" style="font-size: 16px" href=""></a>
                             </li> --}}
                             <li class="nav-item text-right">
-                                <a class="nav-link" style="font-size: 16px" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" style="font-size: 16px" href="{{ route('login') }}">เข้าสู่ระบบ</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item text-right">
-                                    <a class="nav-link" style="font-size: 16px" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" style="font-size: 16px" href="{{ route('register') }}">สมัครสมาชิก</a>
                                 </li>
                             @endif
                         @else
@@ -175,7 +175,7 @@
                                     </form>
                                 </div>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="/cart"><i class="fas fa-shopping-cart"></i><span class="badge badge-danger">{{Count(Cart::session(Auth::id())->getContent())}}</span></a></li>
+                            <li class="nav-item ml-auto"><a class="nav-link" href="/cart"><i class="fas fa-shopping-cart"></i><span class="badge badge-danger">{{Count(Cart::session(Auth::id())->getContent())}}</span></a></li>
                         @endguest
                     </ul>
                 </div>
@@ -189,7 +189,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse " id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
+                    {{-- <ul class="navbar-nav ml-auto ">
                         <li class="nav-item text-center ml-5">
                             <a class="nav-link font-24" href="/"><i class="fas fa-carrot text-danger icon"></i><p class="text-dark">รายการสินค้า</p></a>
                         </li>
@@ -202,7 +202,21 @@
                         <li class="nav-item text-center ml-5">
                             <a class="nav-link font-24" href="#"><i class="fas fa-bug text-danger icon"></i><p class="text-dark">แจ้งปัญหา</p></a>
                         </li>
-                    </ul>
+                    </ul> --}}
+                    <div class="row ml-lg-auto pt-3">
+                        <div class="col-3 text-center">
+                            <a class="nav-link font-24" href="/"><i class="fas fa-carrot text-danger icon"></i><p class="text-dark d-none d-lg-block">รายการสินค้า</p></a>
+                        </div>
+                        <div class="col-3 text-center">
+                            <a class="nav-link font-24" href="/store"><i class="fas fa-store text-danger icon"></i><p class="text-dark d-none d-lg-block">ร้านค้า</p></a>
+                        </div>
+                        <div class="col-3 text-center">
+                            <a class="nav-link font-24" href="{{route('store.create')}}"><i class="fas fa-id-badge text-danger icon"></i><p class="text-dark d-none d-lg-block">ร่วมธุรกิจกับเรา</p></a>
+                        </div>
+                        <div class="col-3 text-center">
+                            <a class="nav-link font-24" href="#"><i class="fas fa-bug text-danger icon"></i><p class="text-dark d-none d-lg-block">แจ้งปัญหา</p></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>

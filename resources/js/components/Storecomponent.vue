@@ -90,7 +90,7 @@
               </a>
               <p>{{store.store_name}}</p>
               <span>
-                <b>{{store.store_detail}}</b>
+                <b class="d-none d-lg-inline">{{store.store_detail}}</b>
               </span>
               <span><b>{{store.start_store_at}}</b></span>
             </div>

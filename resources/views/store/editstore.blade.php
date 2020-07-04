@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row my-3">
-            <div class="col-6">
+            <div class="col-lg-6">
                 <form action="{{route('store.update',$id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('put')

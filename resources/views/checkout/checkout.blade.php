@@ -68,18 +68,18 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-6 row">
+            <div class="col-lg-6 row">
                 <form action="{{route('checkout.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" value="">
-                    <div class="form-group col-12">
+                    <div class="form-group col-lg-12">
                         <label for="">ยอดเงินที่ต้องชำระ</label>
                         <input type="text" readonly class="form-control text-right" name="total" value="{{Cart::session(Auth::id())->getTotal()}} บาท">
                     </div>
-                    <div class="form-group col-12">
+                    <div class="form-group col-lg-12">
                         <div class="row mb-3">
                             @if (strlen(Auth::user()->phone_number) > 0 && strlen(Auth::user()->address) > 0)
-                            <div class="col-12">
+                            <div class="col-lg-12">
                                 <label for="">ที่อยู่และเบอร์โทร <span class="badge badge-danger" style="font-size: 16px">* กรุณาตรวจสอบที่อยู่ก่อน ยืนยันการชำระเงิน</span></label>
                                 <select class="custom-select" name="address" id="">
                                     @foreach (Auth::user()->address as $item)
@@ -92,7 +92,7 @@
                             @endif
                         </div>
                     </div>
-                    <div class="form-group col-12">
+                    <div class="form-group col-lg-12">
                         <label for="">รูปภาพใบเสร็จการโอนเงิน</label>
                         <input class="custom-file" type="file" name="billimage" required>
                     </div>
@@ -103,10 +103,10 @@
                         @endif
                 </div>
                 </form>
-            <div class="col-6">
-                <h2 class="text-center">ขั้นตอนการตรวจสอบการสั่งซื้อ</h2>
+            <div class="col-lg-6">
+                <h2 class="text-center mt-3">ขั้นตอนการตรวจสอบการสั่งซื้อ</h2>
                 <ol>
-                    <li>เช็คที่ มุมบนขวามือ > ประวัติการสั่งซื้อ <a href="">ที่นี่</a></li>
+                    <li>เช็คที่ มุมบนขวามือ > ประวัติการสั่งซื้อ <a href="{{route('user.order')}}">ที่นี่</a></li>
                     <li>การโอนยอดที่เป็น จุดทศนิยม จะให้การตรวจสอบยอดง่ายขึ้น เช่น 600.01 , 600.20</li>
                     <li>หากพบปัญหา จากสินค้าที่สั่งซื้อ ให้โทรแจ้งผู้ขายโดยตรง</li>
                     <li>ทางเว็บไซต์ไม่มีส่วนใด้สว่นเสียกับการซื้อขายของท่านเป็นเพียง แพลตฟอร์ม สำหรับการซื้อขายเท่านั้น</li>

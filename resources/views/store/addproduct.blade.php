@@ -27,23 +27,23 @@
                   @method('post')
                   <input type="hidden" name="store" value="{{$id}}">
                 <div class="row">
-                    <div class="col-4 form-group">
+                    <div class="col-lg-4 form-group">
                         <label for="">Product Name</label>
                         <input class="form-control " type="text" name="product_name" placeholder="exam ตระกร้าสาร ,ถุงผ้า, ของเล่นพลาสติกปลอดสาร">
                     </div>
-                    <div class="col-4 form-group">
+                    <div class="col-lg-4 form-group">
                         <label for="">Product Detail</label>
                         <input class="form-control " type="text" name="product_detail" placeholder="exam ตระกร้านี้ทำมาจากไม้วิเศษ ไม่มีวันหักหรืองอ ต้องผ่านวิธีการทำแบบพิเศษเท่านั้น!">
                     </div>
-                    <div class="col-4 form-group">
+                    <div class="col-lg-4 form-group">
                         <label for="">Price</label>
                         <input class="form-control " type="number" name="product_price" placeholder="exam 20.00 ,36.36 ,10 ,300">
                     </div>
-                    <div class="col-4 form-group">
+                    <div class="col-lg-4 form-group">
                         <label for="">Quantity</label>
                         <input class="form-control " type="number" name="product_quantity" placeholder="exam 7 ,8 ,9 ,10 ,11">
                     </div>
-                    <div class="col-4 form-group">
+                    <div class="col-lg-4 form-group">
                         <label for="">Type</label>
                         <select class="custom-select" name="category" id="">
                             @foreach ($category as $item)
@@ -51,14 +51,14 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-12 row">
-                        <div class="col-3">
+                    <div class="col-lg-12 row">
+                        <div class="col-lg-3">
                             <input type="file" multiple name="images[]" class="custom-file" id="files" onchange="previewFiles(this)">
                             <label for="">รูปสินค้า</label>
                         </div>
-                        <div class="col-9 row" id="previewPicture"></div>
+                        <div class="col-lg-9 row" id="previewPicture"></div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-lg-12 mt-2">
                         <input class="btn btn-primary" type="submit" value="เพิ่มสินค้า">
                     </div>
               </form>

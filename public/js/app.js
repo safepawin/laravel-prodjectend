@@ -37897,7 +37897,7 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "container mt-5" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-3" }, [
+        _c("div", { staticClass: "col-lg-3 col-sm-12" }, [
           _c("div", { staticClass: "card" }, [
             _vm._m(0),
             _vm._v(" "),
@@ -37971,14 +37971,14 @@ var render = function() {
         ]),
         _vm._v(" "),
         _vm.products.length >= 1
-          ? _c("div", { staticClass: "col-9" }, [
+          ? _c("div", { staticClass: "col-lg-9 col-sm-12" }, [
               _c(
                 "div",
                 { staticClass: "row" },
                 [
                   _c("div", { staticClass: "col-12 border-bottom" }, [
                     _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-6 mr-auto" }, [
+                      _c("div", { staticClass: "col-lg-6 col-sm-6 mr-auto" }, [
                         _c("h3", [_vm._v("รายการสินค้า")]),
                         _vm._v(" "),
                         _c("p", [
@@ -37988,12 +37988,13 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-6 ml-auto" }, [
+                      _c("div", { staticClass: "col-lg-6 col-sm-6 ml-auto" }, [
                         _c("div", { staticClass: "dropdown text-right" }, [
                           _c(
                             "button",
                             {
-                              staticClass: "btn btn-secondary dropdown-toggle",
+                              staticClass:
+                                "btn btn-secondary dropdown-toggle mb-2",
                               attrs: {
                                 type: "button",
                                 id: "dropdownMenuButton",
@@ -38039,7 +38040,7 @@ var render = function() {
                   _vm._l(_vm.products, function(product) {
                     return _c(
                       "div",
-                      { key: product.id, staticClass: "col-3 p-3" },
+                      { key: product.id, staticClass: "col-lg-3 col-6 p-3" },
                       [
                         _c(
                           "a",
@@ -38053,7 +38054,7 @@ var render = function() {
                           },
                           [
                             _c("img", {
-                              staticClass: "rounded-lg border",
+                              staticClass: "rounded-lg border w-100",
                               attrs: {
                                 width: "180px",
                                 height: "120px",
@@ -38219,7 +38220,11 @@ var render = function() {
                   _vm._v(" "),
                   _c("p", [_vm._v(_vm._s(store.store_name))]),
                   _vm._v(" "),
-                  _c("span", [_c("b", [_vm._v(_vm._s(store.store_detail))])]),
+                  _c("span", [
+                    _c("b", { staticClass: "d-none d-lg-inline" }, [
+                      _vm._v(_vm._s(store.store_detail))
+                    ])
+                  ]),
                   _vm._v(" "),
                   _c("span", [_c("b", [_vm._v(_vm._s(store.start_store_at))])])
                 ])
