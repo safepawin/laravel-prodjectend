@@ -205,16 +205,16 @@
                     </ul> --}}
                     <div class="row ml-lg-auto pt-3">
                         <div class="col-3 text-center">
-                            <a class="nav-link font-24" href="/"><i class="fas fa-carrot text-danger icon"></i><p class="text-dark d-none d-lg-block">รายการสินค้า</p></a>
+                            <a class="nav-link font-24" href="/"><i class="fas fa-carrot text-danger icon"></i><p class="text-dark d-none d-lg-block">รายการสินค้า</p><span class="text-dark d-block d-lg-none" style="font-size: 12px">รายการสินค้า</span></a>
                         </div>
                         <div class="col-3 text-center">
-                            <a class="nav-link font-24" href="/store"><i class="fas fa-store text-danger icon"></i><p class="text-dark d-none d-lg-block">ร้านค้า</p></a>
+                            <a class="nav-link font-24" href="/store"><i class="fas fa-store text-danger icon"></i><p class="text-dark d-none d-lg-block">ร้านค้า</p><span class="text-dark d-block d-lg-none" style="font-size: 12px">ร้านค้า</span></a>
                         </div>
                         <div class="col-3 text-center">
-                            <a class="nav-link font-24" href="{{route('store.create')}}"><i class="fas fa-id-badge text-danger icon"></i><p class="text-dark d-none d-lg-block">ร่วมธุรกิจกับเรา</p></a>
+                            <a class="nav-link font-24" href="{{route('store.create')}}"><i class="fas fa-id-badge text-danger icon"></i><p class="text-dark d-none d-lg-block">ร่วมธุรกิจกับเรา</p><span class="text-dark d-block d-lg-none" style="font-size: 11px">ร่วมธุรกิจกับเรา</span></a>
                         </div>
                         <div class="col-3 text-center">
-                            <a class="nav-link font-24" href="#"><i class="fas fa-bug text-danger icon"></i><p class="text-dark d-none d-lg-block">แจ้งปัญหา</p></a>
+                            <a class="nav-link font-24" href="#"><i class="fas fa-bug text-danger icon"></i><p class="text-dark d-none d-lg-block">แจ้งปัญหา</p><span class="text-dark d-block d-lg-none" style="font-size: 12px">แจ้งปัญหา</span></a>
                         </div>
                     </div>
                 </div>

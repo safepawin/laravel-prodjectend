@@ -86,7 +86,7 @@
             </div>
             <div class="col-3 p-3" v-for="store in stores" :key="store.id">
               <a :href="'/store/'+store.id">
-                <img class="img img-fluid" src="https://via.placeholder.com/300x200" alt />
+                <img class="img img-fluid" :src="/images/+store.store_image" alt />
               </a>
               <p>{{store.store_name}}</p>
               <span>

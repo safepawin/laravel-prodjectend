@@ -26,6 +26,7 @@
     "dependencies": {
         "async": "^3.2.0",
         "chart.js": "^2.9.3",
+        "sweetalert2": "^9.15.2",
         "thai-baht-text": "^1.0.8",
         "vue-infinite-loading": "^2.4.5",
         "vuejs-paginate": "^2.1.0",

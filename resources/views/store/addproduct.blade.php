@@ -56,7 +56,7 @@
                             <input type="file" multiple name="images[]" class="custom-file" id="files" onchange="previewFiles(this)">
                             <label for="">รูปสินค้า</label>
                         </div>
-                        <div class="col-lg-9 row" id="previewPicture"></div>
+                        <div class="col-lg-9 col-xs-12 col-md-12 col-sm-12 row" id="previewPicture"></div>
                     </div>
                     <div class="col-lg-12 mt-2">
                         <input class="btn btn-primary" type="submit" value="เพิ่มสินค้า">
@@ -93,7 +93,7 @@
 
     var preview = document.querySelector('#previewPicture');
     var files  = file.files;
-
+    preview.innerHTML = ''
     function readAndPreview(file) {
 
     // Make sure `file.name` matches our extensions criteria
@@ -102,7 +102,7 @@
 
         reader.addEventListener("load", function () {
         var image = new Image();
-        image.className = 'img img-fluid col-4'
+        image.className = 'img w-100 h-sm-50'
         image.title = file.name;
         image.src = this.result;
         preview.appendChild( image );

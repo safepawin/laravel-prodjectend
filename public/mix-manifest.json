@@ -2,5 +2,7 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/js/chart.js": "/js/chart.js",
-    "/js/thaibath.js": "/js/thaibath.js"
+    "/js/thaibath.js": "/js/thaibath.js",
+    "/js/sweetalert2.min.js": "/js/sweetalert2.min.js",
+    "/css/sweetalert2.min.css": "/css/sweetalert2.min.css"
 }

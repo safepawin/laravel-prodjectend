@@ -38211,10 +38211,7 @@ var render = function() {
                   _c("a", { attrs: { href: "/store/" + store.id } }, [
                     _c("img", {
                       staticClass: "img img-fluid",
-                      attrs: {
-                        src: "https://via.placeholder.com/300x200",
-                        alt: ""
-                      }
+                      attrs: { src: /images/ + store.store_image, alt: "" }
                     })
                   ]),
                   _vm._v(" "),

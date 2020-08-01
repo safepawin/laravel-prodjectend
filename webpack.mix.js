@@ -15,4 +15,6 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
 mix.copy('node_modules/chart.js/dist/chart.js', 'public/js/chart.js');
 mix.copy('node_modules/thai-baht-text/src/thai-baht-text.js','public/js/thaibath.js');
+mix.copy('node_modules/sweetalert2/dist/sweetalert2.min.js','public/js/sweetalert2.min.js');
+mix.copy('node_modules/sweetalert2/dist/sweetalert2.min.css','public/css/sweetalert2.min.css')
     // เทสgit

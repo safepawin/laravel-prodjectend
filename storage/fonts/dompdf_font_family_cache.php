@@ -84,9 +84,9 @@
     'normal' => $fontDir . '/sriracha-normal_3aab145f024d3a43d79a493d2dadf4c2',
   ),
   'thsarabunnew' => array(
-    'normal' => $fontDir . '/thsarabunnew-normal_93a0bba87073e8ddbdec53f3cf56d5f6',
-    'bold' => $fontDir . '/thsarabunnew-bold_7178e57b7c80a38bfa7f361fca7c7b4d',
-    'italic' => $fontDir . '/thsarabunnew-italic_21f4e35694648b50510640c301aff782',
-    'bold_italic' => $fontDir . '/thsarabunnew-bold-italic_19553f656f4cd15dbf7a270eab5e70c3',
+    'normal' => $fontDir . '/thsarabunnew-normal_220a44cbeb14bdf87f74e6c47f6fba9a',
+    'bold' => $fontDir . '/thsarabunnew-bold_3e076b77e4e8d6fce5bdca56c94fcd5d',
+    'italic' => $fontDir . '/thsarabunnew-italic_a6096d990669cba59eac62b04166c85f',
+    'bold_italic' => $fontDir . '/thsarabunnew-bold-italic_296a4c324f9ad3b39bda4419e15fd971',
   ),
 ) ?>
