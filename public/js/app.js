@@ -2018,6 +2018,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 // function getImage(id){
 //      axios.get('http://projectend.test:8080/api/product/productimage/'+id).then(res=>{
 //             console.log('iamges: ',res.data[0].product_image)
@@ -2117,6 +2118,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -37873,24 +37875,17 @@ var render = function() {
             },
             domProps: { value: _vm.search },
             on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.search = $event.target.value
-              }
+              input: [
+                function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.search = $event.target.value
+                },
+                _vm.searchProduct
+              ]
             }
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-outline-success my-2 my-sm-0",
-              attrs: { type: "button" },
-              on: { click: _vm.searchProduct }
-            },
-            [_vm._v("Search")]
-          )
+          })
         ])
       ])
     ]),
@@ -38163,24 +38158,17 @@ var render = function() {
             },
             domProps: { value: _vm.search },
             on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.search = $event.target.value
-              }
+              input: [
+                function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.search = $event.target.value
+                },
+                _vm.searchStore
+              ]
             }
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-outline-success my-2 my-sm-0",
-              attrs: { type: "button" },
-              on: { click: _vm.searchStore }
-            },
-            [_vm._v("Search")]
-          )
+          })
         ])
       ])
     ]),

@@ -51,3 +51,6 @@ Route::get('user/orderdetail/{id}','UserController@orderDetail')->name('user.ord
 
 
 Route::resource('checkout', 'CheckoutController');
+
+Route::get('/security','InfoController@security_page');
+Route::get('/contact','InfoController@contact_page');

@@ -10,12 +10,13 @@
             placeholder="Search"
             aria-label="Search"
             v-model="search"
+            @input="searchProduct"
           />
-          <button
+          <!-- <button
             class="btn btn-outline-success my-2 my-sm-0"
             type="button"
             @click="searchProduct"
-          >Search</button>
+          >Search</button> -->
         </form>
       </div>
     </nav>

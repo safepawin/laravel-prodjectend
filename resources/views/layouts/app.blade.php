@@ -246,16 +246,16 @@
             </div>
             <div class="row bg-danger">
                 <div class="col-3 text-center my-5">
-                    <a class="text-center text-decoration-none text-dark" href=""><i class="fas fa-user-shield iconBig"></i><h4 class="py-2 text-white text-small">ความปลอดภัย</h4></a>
+                    <p class="text-center text-decoration-none text-dark" href=""><i class="fas fa-user-shield iconBig"></i><h4 class="py-2 text-white text-small">ความปลอดภัย</h4></p>
                 </div>
                 <div class="col-3 text-center my-5">
-                    <a class="text-center text-decoration-none text-dark" href=""><i class="fas fa-comments-dollar iconBig"></i><h4 class="py-2 text-white text-small">การติดต่อกับผู้ขายโดยตรง</h4></a>
+                    <p class="text-center text-decoration-none text-dark" href=""><i class="fas fa-comments-dollar iconBig"></i><h4 class="py-2 text-white text-small">การติดต่อกับผู้ขายโดยตรง</h4></p>
                 </div>
                 <div class="col-3 text-center my-5">
-                    <a class="text-center text-decoration-none text-dark" href=""><i class="fas fa-shipping-fast iconBig"></i><h4 class="py-2 text-white text-small">ตรวจสอบการส่งสินค้าได้ด้วยตนเอง</h4></a>
+                    <p class="text-center text-decoration-none text-dark" href=""><i class="fas fa-shipping-fast iconBig"></i><h4 class="py-2 text-white text-small">ตรวจสอบการส่งสินค้าได้ด้วยตนเอง</h4></p>
                 </div>
                 <div class="col-3 text-center my-5">
-                    <a class="text-center text-decoration-none text-dark " href=""><i class="fas fa-user-clock iconBig"></i><h4 class="py-2 text-white text-small">สามารถขายสินค้าได้ตลอด 24 ชั่วโมง</h4></a>
+                    <p class="text-center text-decoration-none text-dark " href=""><i class="fas fa-user-clock iconBig"></i><h4 class="py-2 text-white text-small">สามารถขายสินค้าได้ตลอด 24 ชั่วโมง</h4></p>
                 </div>
             </div>
         </div>
