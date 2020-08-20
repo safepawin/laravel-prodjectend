@@ -62,4 +62,12 @@ class UserController extends Controller
 
         return view('user.orderdetail',['orderdetail'=> $orderdetail]);
     }
+
+    public function editAddress(Request $request)
+    {
+        $address = Address::find($request->addressId)->update([
+            'address' => $request->address
+        ]);
+        return redirect(route('user.profile'));
+    }
 }

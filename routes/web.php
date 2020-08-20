@@ -29,7 +29,7 @@ Route::get('/admin', function () {
 });
 
 Route::resource('cart', 'CartController')->middleware('auth');
-Route::delete('cart/decrease/{id}', "CartController@decrease")->middleware('auth');
+Route::delete('cart/decrease/{id}', "CartController@decrease")->middleware('auth')->name('cart.decrease');
 
 
 Route::resource('product', 'ProductController')->middleware('auth');
@@ -48,7 +48,7 @@ Route::put('user/update', 'UserController@userupdate')->name('user.update');
 Route::delete('user/delete/{id}', 'UserController@userdelete')->name('user.delete');
 Route::get('user/userOrder','UserController@userOrder')->name('user.order');
 Route::get('user/orderdetail/{id}','UserController@orderDetail')->name('user.orderdetail');
-
+Route::patch('user/edit-Address','UserController@editAddress')->name('user.editAddress');
 
 Route::resource('checkout', 'CheckoutController');
 

@@ -22,7 +22,7 @@
                             <td>{{$item->order_total}}</td>
                             <td>{{$item->address->address}}</td>
                             <td>{{$item->order_status}}</td>
-                            <td><a href="orderdetail/{{$item->id}}"><i class="fas fa-search"></i></a></td>
+                            <td><a href="{{route('user.orderdetail',$item->id)}}"><i class="fas fa-search"></i></a></td>
                             <td><a href="{{route('checkout.show',$item->id)}}"><i class="fas fa-receipt"></i></a></td>
                         </tr>
                         @endforeach

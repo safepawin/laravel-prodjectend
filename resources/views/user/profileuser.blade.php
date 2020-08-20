@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('script')
-
     <script>
         function deleteAddress(id,e){
             Swal.fire({
@@ -25,6 +24,13 @@
 
                 }
             })
+        }
+        function editAddress(e,id){
+            const address = e.getAttribute('data-modal-address')
+            const editAddress = document.getElementById('address')
+            const addressId = document.getElementById('addressId')
+            editAddress.value = address
+            addressId.value = id
         }
 
     </script>
@@ -77,9 +83,10 @@
                     <label for="">Old Address</label>
                     <ul class="list-group">
                         @foreach ($user->address as $item)
-                            <li class="list-group-item p-1">
-                                <b class="text-center ml-2">{{$item->address}}</b>
-                                <a class="btn " onclick="deleteAddress({{$item->id}},this)"><i class="far fa-trash-alt text-danger"></i></a>
+                            <li class="list-group-item p-1 text-truncate" title="{{$item->address}}">
+                                <b class="text-center pl-2  ">{{$item->address}}</b>
+                                {{-- <a class="btn " onclick="deleteAddress({{$item->id}},this)"><i class="far fa-trash-alt text-danger"></i></a> --}}
+                                <a class="btn " onclick="editAddress(this,{{$item->id}})" data-toggle="modal" data-target="#modalEdit" data-modal-address="{{$item->address}}"><i class="far fa-edit text-info"></i></i></a>
                             </li>
                         @endforeach
                     </ul>
@@ -90,6 +97,34 @@
                 </div>
             </div>
         </form>
+    </div>
+
+    <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">จัดการผู้ใช้</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{route('user.editAddress')}}" method="post">
+                    @csrf
+                    @method('patch')
+                    <input type="hidden" name="addressId" id="addressId">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="">Address</label>
+                            <input class="form-control" type="text" name="address" id="address" placeholder="แก้ไขที่อยู่" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary btn-save">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 @endsection
 
