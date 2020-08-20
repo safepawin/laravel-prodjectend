@@ -17,6 +17,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"></script>
 
+
     @yield('header')
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -25,6 +26,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <title>ร้านค้าของคุณ</title>
+
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -61,7 +63,7 @@
       <!-- Main Sidebar Container -->
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="{{route('store.edit',$id)}}" class="brand-link">
+        <a href="{{route('store.edit',$id)}}" class="brand-link" data-toggle="tooltip" data-placement="right" title="เปลี่ยนชื่อร้าน , รายระเอียด , รูปร้านค้า">
           {{-- <img src="{{.Auth::user()->store->find($id)->store_image}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                style="opacity: .8"> --}}
           <span class="brand-text font-weight-light">{{Auth::user()->store->find($id)->store_name}}</span>
@@ -131,5 +133,8 @@
         <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
         reserved.
     </footer>
+
+
+    @yield('script')
 </body>
 </html>

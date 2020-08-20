@@ -110,8 +110,9 @@ class CartController extends Controller
     public function destroy($id)
     {
         \Cart::session(Auth::id())->remove($id);
-        return redirect('/cart');
+        return "success";
     }
+
     public function decrease($id){
         $product = Product::find($id);
         $cartcontent = \Cart::session(Auth::id())->getContent()->get($id);

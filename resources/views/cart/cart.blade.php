@@ -1,5 +1,58 @@
 @extends('layouts.app')
+@section('script')
 
+    <script>
+        function deleteProduct(id,e){
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                if (result.value) {
+                    axios.delete('cart/'+id).then(res=>{
+                    console.log(res)
+                    Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                    ).then(function(){
+                        window.location.href = 'cart'
+                    })
+                    })
+
+                }
+            })
+        }
+
+        function increase(id){
+            let value = document.getElementById(id).value ;
+            axios.put('/cart/'+id).then(res=>{
+                document.getElementById('price'+id).innerHTML = res.data[0].quantity * res.data[0].price + ' บาท'
+                document.getElementById('totalPrice').innerHTML = res.data[1]
+                value = res.data[0].quantity
+                document.getElementById(id).value = value;
+                console.log(res)
+        })
+    }
+
+    function decrease(id){
+        let value = document.getElementById(id).value ;
+        document.getElementById(id).value = value;
+        axios.delete('/cart/decrease/'+id).then(res=>{
+            document.getElementById('price'+id).innerHTML = res.data[0].quantity * res.data[0].price + ' บาท'
+            document.getElementById('totalPrice').innerHTML = res.data[1]
+            value = res.data[0].quantity
+            document.getElementById(id).value = value;
+            console.log(res)
+        })
+    }
+    </script>
+
+@endsection
 @section('content')
 <div class="container">
     <div class="card shopping-cart">
@@ -60,13 +113,9 @@
                         </div>
                     </div>
                     <div class="col-2 col-sm-2 col-md-2 text-right">
-                        <form action="/cart/{{$item->id}}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button type="sumbit" class="btn btn-outline-danger btn-xs">
-                                <i class="fa fa-trash" aria-hidden="true"></i>
-                            </button>
-                        </form>
+                        <button type="button" class="btn btn-outline-danger btn-xs btn-delete" onclick="deleteProduct({{$item->id}},this)">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </button>
                     </div>
                     </div>
                 </div>
@@ -106,29 +155,3 @@
   </div>
 @endsection
 
-
-<script>
-    function increase(id){
-    let value = document.getElementById(id).value ;
-        axios.put('/cart/'+id).then(res=>{
-            document.getElementById('price'+id).innerHTML = res.data[0].quantity * res.data[0].price + ' บาท'
-            document.getElementById('totalPrice').innerHTML = res.data[1]
-            value = res.data[0].quantity
-            document.getElementById(id).value = value;
-            console.log(res)
-        })
-    }
-
-    function decrease(id){
-    let value = document.getElementById(id).value ;
-    document.getElementById(id).value = value;
-        axios.delete('/cart/delete/'+id).then(res=>{
-            document.getElementById('price'+id).innerHTML = res.data[0].quantity * res.data[0].price + ' บาท'
-            document.getElementById('totalPrice').innerHTML = res.data[1]
-            value = res.data[0].quantity
-            document.getElementById(id).value = value;
-            console.log(res)
-        })
-    }
-
-</script>

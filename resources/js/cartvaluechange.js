@@ -15,3 +15,4 @@ function increase(id){
         console.log(res)
     })
 }
+

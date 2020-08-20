@@ -11,7 +11,7 @@
     <div class="container" style="height:100vh;">
         <div class="row">
             <div class="col-12 text-center">
-                <table class="table ">
+                <table id="datatable" class="table table-striped table-bordered table-responsive-sm">
                     <thead>
                         <tr>
                             <th>ชื่อสินค้า</th>

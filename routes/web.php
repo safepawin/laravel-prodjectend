@@ -29,7 +29,7 @@ Route::get('/admin', function () {
 });
 
 Route::resource('cart', 'CartController')->middleware('auth');
-Route::delete('cart/delete/{id}', "CartController@decrease")->middleware('auth');
+Route::delete('cart/decrease/{id}', "CartController@decrease")->middleware('auth');
 
 
 Route::resource('product', 'ProductController')->middleware('auth');

@@ -16,7 +16,7 @@
             class="btn btn-outline-success my-2 my-sm-0"
             type="button"
             @click="searchStore"
-          >Search</button> -->
+          >Search</button>-->
         </form>
       </div>
     </nav>
@@ -55,13 +55,13 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>-->
         <div class="col-12">
           <div class="row">
             <div class="col-12 border-bottom">
               <div class="row">
                 <div class="col-6 mr-auto">
-                  <h3>รายชื่อร้านค้า</h3>
+                  <h3>รายชื่อร้านค้าทั้งหมด</h3>
                   <p>ค้นพบร้านค้าจำนวน {{stores.length}}</p>
                 </div>
                 <div class="col-6 ml-auto">
@@ -85,15 +85,19 @@
                 </div>
               </div>
             </div>
-            <div class="col-3 p-3" v-for="store in stores" :key="store.id">
-              <a :href="'/store/'+store.id">
-                <img class="img img-fluid" :src="/images/+store.store_image" alt />
-              </a>
-              <p>{{store.store_name}}</p>
-              <span>
-                <b class="d-none d-lg-inline">{{store.store_detail}}</b>
-              </span>
-              <span><b>{{store.start_store_at}}</b></span>
+            <div class="shadow  my-2 bg-white rounded row">
+              <div class="col-3 p-3" v-for="store in stores" :key="store.id">
+                <a :href="'/store/'+store.id">
+                  <img class="img img-fluid" :src="/images/+store.store_image" alt />
+                </a>
+                <p>{{store.store_name}}</p>
+                <span>
+                  <b class="d-none d-lg-inline">{{store.store_detail}}</b>
+                </span>
+                <span>
+                  <b>{{store.start_store_at}}</b>
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -114,44 +118,40 @@ export default {
   },
   methods: {
     getStoreAll() {
-      axios.get("/api/store").then(result => {
+      axios.get("/api/store").then((result) => {
         this.stores = result.data;
         console.log(this.stores);
       });
     },
     getStoreFilter() {
-      axios.get("/api/storefilter").then(result => {
+      axios.get("/api/storefilter").then((result) => {
         this.filters = result.data;
         console.log(this.filters);
       });
     },
     checkFilter(id) {
       this.filterId = id;
-      axios
-        .put(`/api/storefilter/${id}`)
-        .then(result => {
-          this.stores = result.data;
-          console.log(this.stores);
-        });
+      axios.put(`/api/storefilter/${id}`).then((result) => {
+        this.stores = result.data;
+        console.log(this.stores);
+      });
     },
     searchStore() {
       if (this.search !== "") {
-        axios
-          .get(`/api/store/search/${this.search}`)
-          .then(result => {
-            this.stores = result.data;
-            console.log(this.stores);
-          });
+        axios.get(`/api/store/search/${this.search}`).then((result) => {
+          this.stores = result.data;
+          console.log(this.stores);
+        });
       } else {
         this.getStoreAll();
       }
     },
     defaultFilter() {
-      axios.get("/api/storefilter").then(result => {
+      axios.get("/api/storefilter").then((result) => {
         this.stores = result.data;
         console.log(this.stores);
       });
-    }
-  }
+    },
+  },
 };
 </script>

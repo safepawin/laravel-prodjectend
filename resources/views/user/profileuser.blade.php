@@ -1,8 +1,38 @@
 @extends('layouts.app')
+@section('script')
 
+    <script>
+        function deleteAddress(id,e){
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                if (result.value) {
+                    e.parentElement.remove()
+                    axios.delete('http://projectend.test/user/delete/'+id).then(res=>{
+                    // console.log(res)
+                    Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                    )
+                    })
+
+                }
+            })
+        }
+
+    </script>
+
+@endsection
 @section('content')
     <div class="container">
-        <form action="{{route('user.update')}}" method="post">
+        <form class="form" action="{{route('user.update')}}" method="post">
             <div class="row">
                 @csrf
                 @method('put')
@@ -56,7 +86,7 @@
                 </div>
                 <div class="col-lg-6 ">
                     <label for="">* ถ้ากดแล้วระบบจะทำการบันทึกข้อมูลใหม่ โปรดตรวจสอบให้แน่ใจว่าข้อมูลถูกต้อง</label>
-                    <button class="btn btn-success ">บันทึก</button>
+                    <button class="btn btn-success save-profile">บันทึก</button>
                 </div>
             </div>
         </form>
@@ -64,11 +94,3 @@
 @endsection
 
 
-<script>
-    function deleteAddress(id,e){
-        e.parentElement.remove()
-        axios.delete('http://projectend.test:8080/user/delete/'+id).then(res=>{
-            console.log(res)
-        })
-    }
-</script>

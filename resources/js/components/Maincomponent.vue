@@ -24,10 +24,10 @@
       <div class="row">
         <div class="col-lg-3 col-sm-12">
           <div class="card">
-            <div class="card-header">
-              <h3>ประเภทสินค้า</h3>
+            <div class="card-header bg-danger">
+              <h3 class="text-center">ประเภทสินค้า</h3>
             </div>
-            <div class="card-body">
+            <div class="card-body bg-light">
               <div class="form-check">
                 <label class="form-check-label">
                   <input
@@ -56,7 +56,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-9 col-sm-12" v-if="products.length >=1">
+        <div class="col-lg-9 col-sm-12 shadow p-3 mb-5 bg-white rounded" v-if="products.length >=1">
           <div class="row">
             <div class="col-12 border-bottom">
               <div class="row">
@@ -101,8 +101,8 @@
             </div>
           </div>
         </div>
-        <div class="col-9" v-else>
-            <h1 class="text-center">ไม่มีสินค้า</h1>
+        <div class="col-9 shadow p-3 mb-5 bg-white rounded" v-else>
+            <h1 class="text-center text-danger ">ไม่มีสินค้า</h1>
         </div>
       </div>
     </div>

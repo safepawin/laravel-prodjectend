@@ -7,15 +7,17 @@
                 <div class="col-12 border-top">
                     <h2 class="pt-2">ร้านค้าของคุณ</h2>
                 </div>
+                    <div class="row shadow pt-2 mb-2  bg-white rounded">
                     @foreach ($user->store as $item)
-                        <div class="col-3">
-                            <div class="text-center">
-                                <a class="" href="{{route('store.profile',$item->id)}}"><img class="img img-fluid text-center" src="{{'/images/'.$item->store_image}}" alt=""></a>
+                            <div class="col-3">
+                                <div class="text-center">
+                                    <a class="" href="{{route('store.profile',$item->id)}}"><img class="img img-fluid text-center" src="{{'/images/'.$item->store_image}}" alt=""></a>
+                                </div>
+                                <p class="text-center pt-2"><b><a href="{{route('store.profile',$item->id)}}">{{$item->store_name}}</a></b></p>
                             </div>
-                            <p class="text-center pt-2"><b><a href="{{route('store.profile',$item->id)}}">{{$item->store_name}}</a></b></p>
+                        @endforeach
                         </div>
-                    @endforeach
-                        <div class="col-12 border-bottom mb-2"></div>
+                    <div class="col-12 border-bottom mb-2"></div>
             @else
                 <div class="col-12 border-bottom mb-2">
                     <h2>คุณไม่มีร้านค้า</h2>
