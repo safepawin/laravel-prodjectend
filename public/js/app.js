@@ -38056,7 +38056,10 @@ var render = function() {
                     _vm._l(_vm.products, function(product) {
                       return _c(
                         "div",
-                        { key: product.id, staticClass: "col-lg-3 col-6 p-3" },
+                        {
+                          key: product.id,
+                          staticClass: "col-lg-3 col-6 p-3 shadow-sm"
+                        },
                         [
                           _c(
                             "a",
@@ -38223,24 +38226,30 @@ var render = function() {
               "div",
               { staticClass: "shadow  my-2 bg-white rounded row" },
               _vm._l(_vm.stores, function(store) {
-                return _c("div", { key: store.id, staticClass: "col-3 p-3" }, [
-                  _c("a", { attrs: { href: "/store/" + store.id } }, [
-                    _c("img", {
-                      staticClass: "img img-fluid",
-                      attrs: { src: /images/ + store.store_image, alt: "" }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("p", [_vm._v(_vm._s(store.store_name))]),
-                  _vm._v(" "),
-                  _c("span", [
-                    _c("b", { staticClass: "d-none d-lg-inline" }, [
-                      _vm._v(_vm._s(store.store_detail))
+                return _c(
+                  "div",
+                  { key: store.id, staticClass: "col-3 p-3 shadow-sm" },
+                  [
+                    _c("a", { attrs: { href: "/store/" + store.id } }, [
+                      _c("img", {
+                        staticClass: "img img-fluid",
+                        attrs: { src: /images/ + store.store_image, alt: "" }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [_vm._v(_vm._s(store.store_name))]),
+                    _vm._v(" "),
+                    _c("span", [
+                      _c("b", { staticClass: "d-none d-lg-inline" }, [
+                        _vm._v(_vm._s(store.store_detail))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("span", [
+                      _c("b", [_vm._v(_vm._s(store.start_store_at))])
                     ])
-                  ]),
-                  _vm._v(" "),
-                  _c("span", [_c("b", [_vm._v(_vm._s(store.start_store_at))])])
-                ])
+                  ]
+                )
               }),
               0
             )

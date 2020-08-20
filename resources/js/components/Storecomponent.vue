@@ -86,7 +86,7 @@
               </div>
             </div>
             <div class="shadow  my-2 bg-white rounded row">
-              <div class="col-3 p-3" v-for="store in stores" :key="store.id">
+              <div class="col-3 p-3 shadow-sm" v-for="store in stores" :key="store.id">
                 <a :href="'/store/'+store.id">
                   <img class="img img-fluid" :src="/images/+store.store_image" alt />
                 </a>

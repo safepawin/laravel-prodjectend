@@ -85,7 +85,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-6 p-3" v-for="product in products" :key="product.id" >
+            <div class="col-lg-3 col-6 p-3 shadow-sm" v-for="product in products" :key="product.id" >
               <a :href="product.product_quantity >= 1 ? 'product/'+product.id : ''">
                 <img class="rounded-lg border w-100" width="180px" height="120px" :src="'images/'+product.preview_image" alt="product" />
               </a>
