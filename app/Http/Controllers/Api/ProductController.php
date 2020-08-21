@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::all();
+        $product = Product::where('product_status','=',1)->get();
         return response()->json($product);
     }
 

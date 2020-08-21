@@ -146,7 +146,7 @@
                                     @foreach ($product as $item)
                                         <tr>
                                             <td>
-                                                <img src="{{asset('/images/'.$item->product_image[0]->product_image)}}" alt="{{$item->product_name}}" class="img-circle img-size-32 mr-2">
+                                                <img src="{{asset('/images/'.$item->preview_image)}}" alt="{{$item->preview_image}}" class="img-circle img-size-32 mr-2">
                                                 <b>{{$item->product_name}}</b>
                                             </td>
                                             <td><b>{{number_format($item->product_price,2)}}</b> บาท</td>

@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Laravel\Ui\Presets\Vue;
+
 class StoreController extends Controller
 {
     public function __construct()
@@ -172,24 +173,37 @@ class StoreController extends Controller
     }
     public function storeEditProductSave(Request $request, $id, $pid)
     {
-        $name = date('YmdHis').$request->image->getClientOriginalName();
-        $request->image->move(public_path().'/images/'.Store::find($id)->store_name.'/'.$request->product_name, $name);
-        $product = Product::find($pid)->update([
-            'product_name' => $request->product_name,
-            'product_price' => $request->product_price,
-            'product_detail' => $request->product_detail,
-            'product_status' => $request->product_status,
-            'product_quantity' => $request->product_quantity,
-            'category_id' => $request->category,
-            'preview_image' => Store::find($id)->store_name.'/'.$request->product_name.'/'.$name
-        ]);
-        session()->flash('success', 'แก้ไขข้อมูลสินค้าเรียบร้อย');
-        return redirect('store/profile/' . $id);
+        if (!isset($request->image)) {
+            $product = Product::find($pid)->update([
+                'product_name' => $request->product_name,
+                'product_price' => $request->product_price,
+                'product_detail' => $request->product_detail,
+                'product_status' => $request->product_status,
+                'product_quantity' => $request->product_quantity,
+                'category_id' => $request->category
+            ]);
+            session()->flash('success', 'แก้ไขข้อมูลสินค้าเรียบร้อย');
+            return redirect('store/profile/' . $id);
+        } else {
+            $name = date('YmdHis') . $request->image->getClientOriginalName();
+            $request->image->move(public_path() . '/images/' . Store::find($id)->store_name . '/' . $request->product_name, $name);
+            $product = Product::find($pid)->update([
+                'product_name' => $request->product_name,
+                'product_price' => $request->product_price,
+                'product_detail' => $request->product_detail,
+                'product_status' => $request->product_status,
+                'product_quantity' => $request->product_quantity,
+                'category_id' => $request->category,
+                'preview_image' => Store::find($id)->store_name . '/' . $request->product_name . '/' . $name
+            ]);
+            session()->flash('success', 'แก้ไขข้อมูลสินค้าเรียบร้อย');
+            return redirect('store/profile/' . $id);
+        }
     }
 
     public function storeShowAllOrder($id)
     {
-        $order_detail = Order_detail::where('store_id',$id)->get();
-        return view('store.storeshowallorder',['id'=>$id,'order_detail'=>$order_detail]);
+        $order_detail = Order_detail::where('store_id', $id)->get();
+        return view('store.storeshowallorder', ['id' => $id, 'order_detail' => $order_detail]);
     }
 }
