@@ -22,8 +22,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style>
+
         .font-24{
-                font-size: 20px;
+                font-size: 14px;
                 transition: all 0.3s;
                 border-bottom: 3px solid #f8fafc;
             }
@@ -34,7 +35,7 @@
                 font-size: 50px;
             }
             .iconBig{
-                font-size: 100px;
+                font-size: 50px;
                 transition: all 0.3s;
             }
             input::-webkit-outer-spin-button,
@@ -152,11 +153,11 @@
                                 <a class="nav-link" style="font-size: 16px" href=""></a>
                             </li> --}}
                             <li class="nav-item text-right">
-                                <a class="nav-link" style="font-size: 16px" href="{{ route('login') }}">เข้าสู่ระบบ</a>
+                                <a class="nav-link text-white" style="font-size: 16px" href="{{ route('login') }}">เข้าสู่ระบบ</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item text-right">
-                                    <a class="nav-link" style="font-size: 16px" href="{{ route('register') }}">สมัครสมาชิก</a>
+                                    <a class="nav-link text-white" style="font-size: 16px" href="{{ route('register') }}">สมัครสมาชิก</a>
                                 </li>
                             @endif
                         @else
@@ -191,22 +192,22 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse " id="navbarNav">
-                    {{-- <ul class="navbar-nav ml-auto ">
+                <div class="collapse navbar-collapse " id="navbarNav" >
+                    <ul class="navbar-nav ml-auto " style="margin-top: 24px;">
                         <li class="nav-item text-center ml-5">
-                            <a class="nav-link font-24" href="/"><i class="fas fa-carrot text-danger icon"></i><p class="text-dark">รายการสินค้า</p></a>
+                            <a class="nav-link font-16" href="/"><i class="fas fa-carrot text-danger icon"></i><p class="text-dark">รายการสินค้า</p></a>
                         </li>
                         <li class="nav-item text-center ml-5">
-                            <a class="nav-link font-24" href="/store"><i class="fas fa-store text-danger icon"></i><p class="text-dark">ร้านค้า</p></a>
+                            <a class="nav-link font-16" href="/store"><i class="fas fa-store text-danger icon"></i><p class="text-dark">ร้านค้า</p></a>
                         </li>
                         <li class="nav-item text-center ml-5">
-                            <a class="nav-link font-24" href="{{route('store.create')}}"><i class="fas fa-id-badge text-danger icon"></i><p class="text-dark">ร่วมธุรกิจกับเรา</p></a>
+                            <a class="nav-link font-16" href="{{route('store.create')}}"><i class="fas fa-id-badge text-danger icon"></i><p class="text-dark">ร่วมธุรกิจกับเรา</p></a>
                         </li>
                         <li class="nav-item text-center ml-5">
-                            <a class="nav-link font-24" href="#"><i class="fas fa-bug text-danger icon"></i><p class="text-dark">แจ้งปัญหา</p></a>
+                            <a class="nav-link font-16" href="#"><i class="fas fa-bug text-danger icon"></i><p class="text-dark">แจ้งปัญหา</p></a>
                         </li>
-                    </ul> --}}
-                    <div class="row ml-lg-auto pt-3">
+                    </ul>
+                    {{-- <div class="row ml-lg-auto pt-3">
                         <div class="col-3 text-center">
                             <a class="nav-link font-24" href="/"><i class="fas fa-carrot text-danger icon"></i><p class="text-dark d-none d-lg-block">รายการสินค้า</p><span class="text-dark d-block d-lg-none" style="font-size: 12px">รายการสินค้า</span></a>
                         </div>
@@ -219,18 +220,18 @@
                         <div class="col-3 text-center">
                             <a class="nav-link font-24" href="#"><i class="fas fa-bug text-danger icon"></i><p class="text-dark d-none d-lg-block">แจ้งปัญหา</p><span class="text-dark d-block d-lg-none" style="font-size: 12px">แจ้งปัญหา</span></a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </nav>
-        <div class="py-4">
+        <div class="py-1">
             @yield('content')
         </div>
         <div class="container-fluid ">
             <div class="row bg-dark">
                 <div class="col-md-8 ">
                     <div class=" row">
-                        <img class="col-md-4 col-sm-12 p-0" src="https://via.placeholder.com/300x200" alt="รูปภาพชุมชน">
+                        <img class="col-md-4 col-sm-12 p-0" src="https://via.placeholder.com/300x100" alt="รูปภาพชุมชน">
                         <div class="col-sm-12 col-md-8 my-auto py-3">
                             <h4 class="text-center">สมัครสมาชิกฟรี</h4>
                             <p class="text-center ">ค้นหาข้อมูลของสินค้าอื่นได้ง่ายๆ แค่ 3 Click</p>
@@ -244,20 +245,20 @@
             <div class="row bg-danger border-bottom border-dark">
                 <div class="col-lg-12 my-3">
                     <h4 class="text-center">ร้านค้าชุมชน</h4>
-                    <p class="text-center ">แหล่งกระจายแหละจำหน่ายสินค้าจากชุมชน</p>
+                    <p class="text-center ">แหล่งกระจายและจำหน่ายสินค้าจากชุมชน</p>
                 </div>
             </div>
             <div class="row bg-danger">
-                <div class="col-3 text-center my-5">
+                <div class="col-3 text-center my-2">
                     <p class="text-center text-decoration-none text-dark" href=""><i class="fas fa-user-shield iconBig"></i><h4 class="py-2 text-white text-small">ความปลอดภัย</h4></p>
                 </div>
-                <div class="col-3 text-center my-5">
+                <div class="col-3 text-center my-2">
                     <p class="text-center text-decoration-none text-dark" href=""><i class="fas fa-comments-dollar iconBig"></i><h4 class="py-2 text-white text-small">การติดต่อกับผู้ขายโดยตรง</h4></p>
                 </div>
-                <div class="col-3 text-center my-5">
+                <div class="col-3 text-center my-2">
                     <p class="text-center text-decoration-none text-dark" href=""><i class="fas fa-shipping-fast iconBig"></i><h4 class="py-2 text-white text-small">ตรวจสอบการส่งสินค้าได้ด้วยตนเอง</h4></p>
                 </div>
-                <div class="col-3 text-center my-5">
+                <div class="col-3 text-center my-2">
                     <p class="text-center text-decoration-none text-dark " href=""><i class="fas fa-user-clock iconBig"></i><h4 class="py-2 text-white text-small">สามารถขายสินค้าได้ตลอด 24 ชั่วโมง</h4></p>
                 </div>
             </div>

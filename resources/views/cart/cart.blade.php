@@ -57,9 +57,9 @@
 <div class="container">
     <div class="card shopping-cart">
       <div class="card-header bg-dark ">
-        <button class="btn text-danger btn-outline" onclick="window.history.back()"><i class="fas fa-less-than text-danger pr-1"></i>Back</button>
+        {{-- <button class="btn text-danger btn-outline" onclick="window.history.back()"><i class="fas fa-less-than text-danger pr-1"></i>Back</button> --}}
         <i class="fa fa-shopping-cart ml-2" aria-hidden="true"></i>
-        <span>Shipping cart</span>
+        <span>ตะกร้าสินค้า</span>
         <div class="clearfix"></div>
     </div>
       <div class="card-body">
@@ -122,7 +122,7 @@
                 <hr />
                 @endforeach
                 @else
-                    <h1 class="text-center">ไม่มีสินค้าในตระกร้า</h1>
+                    <h1 class="text-center">ไม่มีสินค้าในตะกร้า</h1>
             @endif
         <!-- END PRODUCT -->
         <!-- <div class="text-right">
@@ -142,10 +142,12 @@
           </div>
         </div>-->
         <div class="text-right" style="margin: 10px">
-          <a href="{{route('checkout.index')}}" class="btn btn-success text-right">Checkout</a>
+            <button class="btn  btn-danger" onclick="window.history.back()">ย้อนกลับ  <!-- <i class="fas fa-less-than text-white pr-1"></i> -->
+            </button>
+          <a href="{{route('checkout.index')}}" class="btn btn-success text-right">ยืนยันการสั่งซื้อ</a>
           <div class="text-right" style="margin: 5px">
-            Total price:
-            <b id="totalPrice">{{Cart::session(Auth::id())->getTotal()}}</b>
+            ราคารวม:
+            <b id="totalPrice">{{Cart::session(Auth::id())->getTotal()}}</b> บาท
           </div>
         </div>
       </div>

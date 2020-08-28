@@ -49,7 +49,7 @@ class ProductFilterController extends Controller
      */
     public function show($sort)
     {
-        $products = Product::orderBy('product_price', $sort)->get();
+        $products = Product::where('product_status','=',1)->orderBy('product_price', $sort)->get();
         return response()->json($products);
     }
 
@@ -73,7 +73,7 @@ class ProductFilterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $products = Product::where('category_id', $id)->orderBy('product_price', 'asc')->get();
+        $products = Product::where('category_id', $id)->where('product_status','=',1)->orderBy('product_price', 'asc')->get();
         return response()->json($products);
     }
 
@@ -93,7 +93,7 @@ class ProductFilterController extends Controller
             $products = Product::orderBy('product_price', $sort)->get();
             return response()->json($products);
         }
-        $products = Product::where('category_id', $id)->orderBy('product_price', $sort)->get();
+        $products = Product::where('category_id', $id)->where('product_status','=',1)->orderBy('product_price', $sort)->get();
         return response()->json($products);
     }
 }

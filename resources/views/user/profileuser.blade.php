@@ -44,43 +44,43 @@
                 @method('put')
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label for="">Firstname</label>
+                        <label for="">ชื่อ</label>
                         <input class="form-control" type="text" name="firstname" value="{{$user->firstname}}">
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label for="">Lastname</label>
+                        <label for="">นามสกุล</label>
                         <input class="form-control" type="text" name="lastname" value="{{$user->lastname}}">
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label for="">Phone Number</label>
+                        <label for="">เบอร์โทรศัพท์</label>
                         <input class="form-control" type="text" name="phone_number" value="{{$user->phone_number}}">
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label for="">Add New Address</label>
+                        <label for="">เพิ่มที่อยู่ใหม่</label>
                         <input class="form-control" type="text" name="address" value="">
                     </div>
                 </div>
 
                 <div class="col-lg-4">
                     <div class="form-group">
-                        <label for="">Type</label>
+                        <label for="">สถานะ</label>
                         <input class="form-control" type="text" value="{{$user->user_type->type_name}}" readonly>
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <div class="form-group">
-                        <label for="">NickName</label>
+                        <label for="">ชื่อเล่น</label>
                         <input class="form-control" type="text" name="name" value="{{$user->name}}">
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <label for="">Old Address</label>
+                    <label for="">ที่อยู่เก่า</label>
                     <ul class="list-group">
                         @foreach ($user->address as $item)
                             <li class="list-group-item p-1 text-truncate" title="{{$item->address}}">
@@ -114,7 +114,7 @@
                     <input type="hidden" name="addressId" id="addressId">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="">Address</label>
+                            <label for="">แก้ไขที่อยู่</label>
                             <input class="form-control" type="text" name="address" id="address" placeholder="แก้ไขที่อยู่" required>
                         </div>
                     </div>

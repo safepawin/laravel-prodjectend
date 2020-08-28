@@ -87,7 +87,7 @@ class ProductController extends Controller
         //
     }
     public function searchProduct($name){
-        $product = Product::Where('product_name','like', '%'.$name.'%')->get();
+        $product = Product::Where('product_name','like', '%'.$name.'%')->where('product_status','=',1)->get();
         return response()->json($product);
     }
 

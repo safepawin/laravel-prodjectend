@@ -99,7 +99,7 @@
                     <a href="#" class="nav-link ">
                     <i class="nav-icon fas fa-th-large"></i>
                     <p>
-                        MenageProduct
+                        จัดการสินค้า
                         <i class="right fas fa-grip-lines"></i>
                     </p>
                     </a>
@@ -107,13 +107,13 @@
                         <li class="nav-item">
                             <a href="{{route('product.createProduct',$id)}}" class="nav-link ">
                             <i class="far fa-plus-square"></i>
-                            <p>Add Product</p>
+                            <p>เพิ่มสินค้า</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                             <i class="far fa-minus-square"></i>
-                            <p>Edit Product</p>
+                            <p>แก้ไขสินค้า</p>
                             </a>
                         </li>
                     </ul>

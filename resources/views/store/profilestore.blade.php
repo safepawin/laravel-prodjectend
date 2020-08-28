@@ -120,7 +120,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header border-0">
-                            <h3 class="card-title">Products</h3>
+                            <h3 class="card-title">สินค้าทั้งหมด</h3>
                             <div class="card-tools">
                                 {{-- <a href="#" class="btn btn-tool btn-sm">
                                 <i class="fas fa-download"></i>
@@ -135,11 +135,11 @@
                             <table class="table table-striped table-valign-middle">
                                 <thead>
                                 <tr>
-                                <th>Product</th>
-                                <th>Price</th>
-                                <th>Quantity</th>
-                                <th>Status</th>
-                                <th>More</th>
+                                <th>สินค้า</th>
+                                <th>ราคา</th>
+                                <th>จำนวน</th>
+                                <th>สถานะ</th>
+                                <th>แก้ไข</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -162,7 +162,7 @@
                                             </td>
                                             <td>
                                                 <a href="/store/storeEditProduct/{{$id}}/{{$item->id}}" class="text-muted">
-                                                <i class="fas fa-search"></i>
+                                                {{-- <i class="fas fa-search"></i> --}} แก้ไข
                                                 </a>
                                             </td>
                                         </tr>

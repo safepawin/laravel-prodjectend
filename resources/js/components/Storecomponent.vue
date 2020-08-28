@@ -90,12 +90,12 @@
                 <a :href="'/store/'+store.id">
                   <img class="img img-fluid" :src="/images/+store.store_image" alt />
                 </a>
-                <p>{{store.store_name}}</p>
+                <h5 class="mt-2"><b>{{store.store_name}}</b></h5>
                 <span>
-                  <b class="d-none d-lg-inline">{{store.store_detail}}</b>
+                  <p class="d-none d-lg-inline">{{store.store_detail}}</p>
                 </span>
                 <span>
-                  <b>{{store.start_store_at}}</b>
+                  <p>{{store.start_store_at}}</p>
                 </span>
               </div>
             </div>
