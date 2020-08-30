@@ -67,6 +67,9 @@ class StoreController extends Controller
         $fullname = explode(' ', $request->fullname);
         $firstname = $fullname[0];
         $lastname = $fullname[1];
+        if($lastname = ''){
+            $lastname = 'ไม่ระบุนามสกุล';
+        }
         $user = User::find(Auth::id())->update([
             'firstname' => $firstname,
             'lastname' => $lastname,

@@ -55,6 +55,9 @@
 @endsection
 @section('content')
 <div class="container">
+    @if(session()->has('message'))
+    <h4 class="alert-danger text-center py-2">{{session()->get('message')}}</h4>
+    @endif
     <div class="card shopping-cart">
       <div class="card-header bg-dark ">
         {{-- <button class="btn text-danger btn-outline" onclick="window.history.back()"><i class="fas fa-less-than text-danger pr-1"></i>Back</button> --}}
@@ -70,7 +73,7 @@
                     <div class="col-12 col-sm-12 col-md-2 text-center">
                     <img
                         class="img-responsive"
-                        src="{{'/images/'.$item->attributes->images->product_image}}"
+                        src="{{'/images/'.$item->attributes->images}}"
                         alt="prewiew"
                         width="120"
                         height="80"

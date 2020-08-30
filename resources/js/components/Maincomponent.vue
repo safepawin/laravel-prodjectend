@@ -2,10 +2,11 @@
   <div>
     <nav class="navbar navbar-light bg-danger sticky-top">
       <div class="container">
-        <a class="navbar-brand text-white"><h3 class="text-sm">สินค้าทั้งหมดตอนนี้ 1000 รายการรอคุณอยู่</h3></a>
-        <form class="form-inline my-2">
+        <!-- <a class="navbar-brand text-white"></a> -->
+        <h4 class="text-small">สินค้าทั้งหมดตอนนี้ 1000 รายการรอคุณอยู่</h4>
+        <form class="form-inline my-2 ">
           <input
-            class="form-control mr-sm-2"
+            class="form-control mr-sm-2 "
             type="search"
             placeholder="ค้นหา"
             aria-label="Search"

@@ -2024,6 +2024,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 // function getImage(id){
 //      axios.get('http://projectend.test:8080/api/product/productimage/'+id).then(res=>{
 //             console.log('iamges: ',res.data[0].product_image)
@@ -37862,9 +37863,11 @@ var render = function() {
   return _c("div", [
     _c("nav", { staticClass: "navbar navbar-light bg-danger sticky-top" }, [
       _c("div", { staticClass: "container" }, [
-        _vm._m(0),
+        _c("h4", { staticClass: "text-small" }, [
+          _vm._v("สินค้าทั้งหมดตอนนี้ 1000 รายการรอคุณอยู่")
+        ]),
         _vm._v(" "),
-        _c("form", { staticClass: "form-inline my-2" }, [
+        _c("form", { staticClass: "form-inline my-2 " }, [
           _c("input", {
             directives: [
               {
@@ -37874,7 +37877,7 @@ var render = function() {
                 expression: "search"
               }
             ],
-            staticClass: "form-control mr-sm-2",
+            staticClass: "form-control mr-sm-2 ",
             attrs: {
               type: "search",
               placeholder: "ค้นหา",
@@ -37901,7 +37904,7 @@ var render = function() {
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-lg-3 col-sm-12" }, [
           _c("div", { staticClass: "card" }, [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _c(
               "div",
@@ -38147,16 +38150,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "navbar-brand text-white" }, [
-      _c("h3", { staticClass: "text-sm" }, [
-        _vm._v("สินค้าทั้งหมดตอนนี้ 1000 รายการรอคุณอยู่")
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
