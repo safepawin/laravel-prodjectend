@@ -54,3 +54,8 @@ Route::resource('checkout', 'CheckoutController');
 
 Route::get('/security','InfoController@security_page');
 Route::get('/contact','InfoController@contact_page');
+Route::get('/admin','AdminController@index')->name('admin.index');
+Route::get('/admin/system','AdminController@editSystem')->name('admin.edit.system');
+Route::post('/admin/systemcate','AdminController@addCategory')->name('admin.system.addcategory');
+Route::post('/admin/systemtype','AdminController@addUserType')->name('admin.system.addusertype');
+Route::put('/admin/editUser','AdminController@adminEditUser')->name('admin.edit.user');
