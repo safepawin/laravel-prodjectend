@@ -41,7 +41,7 @@ Route::get('store/profile/{id}', 'StoreController@storeProfile')->name('store.pr
 Route::get('store/storeEditProduct/{id}/{pid}', 'StoreController@storeEditProduct')->name('store.EditProduct')->middleware('auth');
 Route::post('store/storeEditProduct/{id}/{pid}', 'StoreController@storeEditProductSave')->name('store.EditProductSave')->middleware('auth');
 Route::get('store/storeShowAllOrder/{id}','StoreController@storeShowAllOrder')->name('store.ShowAllOrder')->middleware('auth');
-
+Route::put('store/updatebank/private','StoreController@updateBank')->name('store.updatebank')->middleware('auth');
 
 Route::get('user/profile', 'UserController@userprofile')->name('user.profile');
 Route::put('user/update', 'UserController@userupdate')->name('user.update');

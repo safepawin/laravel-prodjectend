@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Address;
+use App\Bank;
 use App\Category;
 use App\Order;
 use App\Order_detail;
@@ -208,5 +209,30 @@ class StoreController extends Controller
     {
         $order_detail = Order_detail::where('store_id', $id)->get();
         return view('store.storeshowallorder', ['id' => $id, 'order_detail' => $order_detail]);
+    }
+
+    public function updateBank(Request $request){
+
+        $store = Bank::where('store_id','=',$request->store_id)->first();
+
+        // dd($store);
+        if(isset($store)){
+            $bank = $store->update([
+                'bank_name' => $request->bank_name,
+                'bank_number' => $request->bank_number,
+                'bank_phone' => $request->bank_phone
+            ]);
+            return redirect('store/profile/'.$request->store_id);
+            // dd($store);
+        }else{
+            $bank = Bank::create([
+                'bank_name' => $request->bank_name,
+                'store_id' => $request->store_id,
+                'bank_number' => $request->bank_number,
+                'bank_phone' => $request->bank_phone
+            ]);
+            return redirect('store/profile/'.$request->store_id);
+        }
+        // dd($request);
     }
 }

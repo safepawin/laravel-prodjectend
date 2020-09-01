@@ -26,7 +26,7 @@ class ProductController extends Controller
      */
     public function create($id)
     {
-        return view('store.addproduct');
+        // return view('store.addproduct');
     }
 
     /**

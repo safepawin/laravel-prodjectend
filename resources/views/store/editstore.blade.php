@@ -23,13 +23,14 @@
                         <label for="">รูปร้าน</label>
                         <input class="custom-file" type="file" name="store_image" onchange="previewFiles(this)">
                     </div>
-                    <button class="btn btn-primary">บันทึก</button>
+                    <button type="submit" class="btn btn-primary">บันทึก</button>
                 </form>
             </div>
             <div class="col-lg-6">
-                <form action="{{route('store.update',$id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('store.updatebank')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('put')
+                    <input type="hidden" name="store_id" value="{{isset($store->bank->store_id) ? $store->bank->store_id : $id}}">
                     <div class="form-group">
                         <label for="">ชื่อธนาคาร</label>
                         <input class="form-control" type="text" name="bank_name" value="{{isset($store->bank->bank_name) ? $store->bank->bank_name : ''}}">
@@ -43,7 +44,7 @@
                         <input class="form-control" type="text" name="bank_phone" value="{{isset($store->bank->bank_phone) ? $store->bank->bank_phone : ''}}">
                     </div>
 
-                    <button class="btn btn-primary">บันทึก</button>
+                    <button type="submit" class="btn btn-primary">บันทึก</button>
                 </form>
             </div>
             <div class="col-6 mx-auto" id="previewPicture">
