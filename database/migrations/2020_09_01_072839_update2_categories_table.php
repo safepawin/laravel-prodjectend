@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBankTable extends Migration
+class Update2CategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateBankTable extends Migration
      */
     public function up()
     {
-        Schema::create('bank', function (Blueprint $table) {
-            $table->id();
-            $table->string('bank_name');
-            $table->string('store_id');
-            $table->integer('bank_number');
-            $table->integer('bank_phone');
-            $table->timestamps();
+        Schema::table('categories', function (Blueprint $table) {
+            //
         });
     }
 
@@ -30,6 +25,8 @@ class CreateBankTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bank');
+        Schema::table('categories', function (Blueprint $table) {
+            //
+        });
     }
 }

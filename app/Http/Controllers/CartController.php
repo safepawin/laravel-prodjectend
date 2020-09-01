@@ -50,22 +50,34 @@ class CartController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        foreach (\Cart::session(Auth::id())->getContent() as $key => $value) {
-            if ($value->attributes->store != $product->store->id) {
-                // return response()->json(['status' => 'error','message'=> 'สินค้าไม่อยู่ในร้านค้าเดียวกัน หากต้องการซื้อ กรุณา ลบสินค้าออกจากตะกร้าสินค้า']);
-                return redirect('/cart')->with('message','สินค้าไม่อยู่ในร้านค้าเดียวกัน หากต้องการซื้อ กรุณา ลบสินค้าออกจากตะกร้าสินค้า');
+        if(\Cart::session(Auth::id())->getContent()->isEmpty()){
+            $cart = \Cart::session(Auth::id())->add(array(
+                'id' => $product->id,
+                'name' => $product->product_name,
+                'price' => $product->product_price,
+                'quantity' => 1,
+                'attributes' => array('images' => $product->preview_image, 'store' => $product->store->id,'bank'=>$product->store->bank)
+            ));
+            return redirect('/cart');
+        }else{
+            foreach (\Cart::session(Auth::id())->getContent() as $key => $value) {
+                if ($value->attributes->store != $product->store->id) {
+                    // return response()->json(['status' => 'error','message'=> 'สินค้าไม่อยู่ในร้านค้าเดียวกัน หากต้องการซื้อ กรุณา ลบสินค้าออกจากตะกร้าสินค้า']);
+                    return redirect('/cart')->with('message','สินค้าไม่อยู่ในร้านค้าเดียวกัน หากต้องการซื้อ กรุณา ลบสินค้าออกจากตะกร้าสินค้า');
 
-            } else {
-                $cart = \Cart::session(Auth::id())->add(array(
-                    'id' => $product->id,
-                    'name' => $product->product_name,
-                    'price' => $product->product_price,
-                    'quantity' => 1,
-                    'attributes' => array('images' => $product->preview_image, 'store' => $product->store->id)
-                ));
-                return redirect('/cart');
+                } else {
+                    $cart = \Cart::session(Auth::id())->add(array(
+                        'id' => $product->id,
+                        'name' => $product->product_name,
+                        'price' => $product->product_price,
+                        'quantity' => 1,
+                        'attributes' => array('images' => $product->preview_image, 'store' => $product->store->id,'bank'=>$product->store->bank)
+                    ));
+                    return redirect('/cart');
+                }
             }
         }
+
     }
 
 

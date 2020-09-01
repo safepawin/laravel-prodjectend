@@ -26,6 +26,26 @@
                     <button class="btn btn-primary">บันทึก</button>
                 </form>
             </div>
+            <div class="col-lg-6">
+                <form action="{{route('store.update',$id)}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('put')
+                    <div class="form-group">
+                        <label for="">ชื่อธนาคาร</label>
+                        <input class="form-control" type="text" name="bank_name" value="{{isset($store->bank->bank_name) ? $store->bank->bank_name : ''}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="">เลขบัญชี</label>
+                        <input class="form-control" type="text" name="bank_number" value="{{isset($store->bank->bank_number) ? $store->bank->bank_number : ''}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="">เบอร์โทร</label>
+                        <input class="form-control" type="text" name="bank_phone" value="{{isset($store->bank->bank_phone) ? $store->bank->bank_phone : ''}}">
+                    </div>
+
+                    <button class="btn btn-primary">บันทึก</button>
+                </form>
+            </div>
             <div class="col-6 mx-auto" id="previewPicture">
 
             </div>
