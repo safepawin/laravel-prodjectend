@@ -67,6 +67,9 @@
           {{-- <img src="{{.Auth::user()->store->find($id)->store_image}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                style="opacity: .8"> --}}
           <span class="brand-text font-weight-light">{{Auth::user()->store->find($id)->store_name}}</span>
+          @if (isset(Auth::user()->store->find($id)->bank))
+            @else <span class="text-white badge badge-danger d-block">กรอกข้อมูลชำระเงินที่นี่</span>
+          @endif
         </a>
 
         <!-- Sidebar -->
@@ -99,7 +102,7 @@
                     <a href="#" class="nav-link ">
                     <i class="nav-icon fas fa-th-large"></i>
                     <p>
-                        MenageProduct
+                        จัดการสินค้า
                         <i class="right fas fa-grip-lines"></i>
                     </p>
                     </a>
@@ -107,13 +110,13 @@
                         <li class="nav-item">
                             <a href="{{route('product.createProduct',$id)}}" class="nav-link ">
                             <i class="far fa-plus-square"></i>
-                            <p>Add Product</p>
+                            <p>เพิ่มสินค้า</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                             <i class="far fa-minus-square"></i>
-                            <p>Edit Product</p>
+                            <p>แก้ไขสินค้า</p>
                             </a>
                         </li>
                     </ul>

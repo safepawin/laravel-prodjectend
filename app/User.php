@@ -52,10 +52,7 @@ class User extends Authenticatable
     public function user_type(){
         return $this->belongsTo(User_type::class);
     }
-    public function bank()
-    {
-        return $this->hasMany(Bank::class);
-    }
+
     public function order()
     {
         return $this->hasMany(Order::class);

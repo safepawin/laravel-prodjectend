@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bank extends Model
 {
-    public function user()
+    protected $fillable  = ['bank_name','bank_number','bank_phone','store_id'];
+    public function store()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Store::class);
     }
 }

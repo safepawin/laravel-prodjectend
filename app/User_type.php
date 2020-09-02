@@ -8,10 +8,10 @@ class User_type extends Model
 {
     protected $fillable = ['type_name'];
 
-    protected $attributes = [
-        'id' => 1,
-        'type_name'=> 'member'
-    ];
+    // protected $attributes = [
+    //     'id' => 1,
+    //     'type_name'=> 'member'
+    // ];
 
     public function user()
     {

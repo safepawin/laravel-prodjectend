@@ -21,6 +21,10 @@ class Store extends Model
         return $this->hasMany(Order_detail::class);
     }
 
+    public function bank()
+    {
+        return $this->hasOne(Bank::class);
+    }
     protected $attributes = [
         'store_image'=> 'default/store.jpg'
     ];

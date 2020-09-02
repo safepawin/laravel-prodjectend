@@ -2,12 +2,13 @@
   <div>
     <nav class="navbar navbar-light bg-danger sticky-top">
       <div class="container">
-        <a class="navbar-brand text-white">สินค้าทั้งหมดตอนนี้ 1000 รายการรอคุณอยู่</a>
-        <form class="form-inline my-2">
+        <!-- <a class="navbar-brand text-white"></a> -->
+        <h4 class="text-small">สินค้าทั้งหมดตอนนี้ 1000 รายการรอคุณอยู่</h4>
+        <form class="form-inline my-2 ">
           <input
-            class="form-control mr-sm-2"
+            class="form-control mr-sm-2 "
             type="search"
-            placeholder="Search"
+            placeholder="ค้นหา"
             aria-label="Search"
             v-model="search"
             @input="searchProduct"
@@ -25,7 +26,7 @@
         <div class="col-lg-3 col-sm-12">
           <div class="card">
             <div class="card-header bg-danger">
-              <h3 class="text-center">ประเภทสินค้า</h3>
+              <h4 class="text-center">ประเภทสินค้า</h4>
             </div>
             <div class="card-body bg-light">
               <div class="form-check">
@@ -40,6 +41,7 @@
                   />
                   Default
                 </label>
+                <!-- <p class="p-0 m-0" @click="defaultFilter()">ทั้งหมด</p> -->
               </div>
               <div class="form-check" v-for="filter in filters" :key="filter.id" :value="filter.id">
                 <label class="form-check-label" :for="filter.id">
@@ -50,14 +52,14 @@
                     :id="filter.id"
                     @change="checkFilter(filter.id)"
                   />
-                  {{filter.category_name}}
+                  <p class="p-0 m-0" @click="checkFilter(filter.id)">{{filter.category_name}}</p>
                 </label>
               </div>
             </div>
           </div>
         </div>
         <div class="col-lg-9 col-sm-12 shadow p-3 mb-5 bg-white rounded" v-if="products.length >=1">
-          <div class="row">
+          <div class="row p-1">
             <div class="col-12 border-bottom">
               <div class="row">
                 <div class="col-lg-6 col-sm-6 mr-auto">
@@ -85,19 +87,19 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-6 p-3 shadow-sm" v-for="product in products" :key="product.id" >
+            <div class="col-lg-3 col-6 p-3 shadow-sm " v-for="product in products" :key="product.id" >
               <a :href="product.product_quantity >= 1 ? 'product/'+product.id : ''">
                 <img class="rounded-lg border w-100" width="180px" height="120px" :src="'images/'+product.preview_image" alt="product" />
               </a>
-              <p>{{product.product_name }}</p>
+              <h5><b>{{product.product_name }}</b></h5>
               <span>
                 ราคา
                 <b>{{product.product_price}}</b>
               </span>
-              <span>
+              <p>
                 คงเหลือ
-                <b :class="product.product_quantity >=1 ? '' : 'text-danger'">{{product.product_quantity >=1 ? product.product_quantity : 'สินค้าหมด'}}</b>
-              </span>
+                <span :class="product.product_quantity >=1 ? '' : 'text-danger'">{{product.product_quantity >=1 ? product.product_quantity : 'สินค้าหมด'}}</span>
+              </p>
             </div>
           </div>
         </div>
@@ -108,6 +110,10 @@
     </div>
   </div>
 </template>
+
+<style lang="stylus" scoped>
+
+</style>
 
 <script>
 // function getImage(id){

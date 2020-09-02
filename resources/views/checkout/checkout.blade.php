@@ -25,7 +25,7 @@
                     <tbody>
                         @foreach (Cart::session(Auth::id())->getContent() as $item)
                         <tr class="text-center">
-                            <td><img class="rounded" width="70px" src="{{'/images/'.$item->attributes->images->product_image}}" alt=""></td>
+                            <td><img class="rounded" width="70px" src="{{'/images/'.$item->attributes->images}}" alt=""></td>
                             <td>{{$item->name}}</td>
                             <td>{{number_format($item->price,2)}}</td>
                             <td>{{$item->quantity}}</td>
@@ -55,13 +55,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (Auth::user()->bank as $item)
+                        @foreach (Cart::session(Auth::id())->getContent() as $item)
+                        @if (isset($item->attributes->bank))
                         <tr class="text-center">
-                            <td>{{$item->bank_name}}</td>
-                            <td><b>{{$item->bank_number}}</b></td>
-                            <td>{{$item->user->firstname}}  {{$item->user->lastname}}</td>
-                            <td>{{$item->bank_phone}}</td>
+                            <td>{{$item->attributes->bank->bank_name}}</td>
+                            <td><b>{{$item->attributes->bank->bank_number}}</b></td>
+                            <td>{{$item->attributes->bank->store->firstname}}  {{$item->attributes->bank->store->lastname}}</td>
+                            <td>{{$item->attributes->bank->bank_phone}}</td>
                         </tr>
+                        @else <h1 class="text-center text-danger">ผู้ขายไม่ได้กรอกรายระเอียดการชำระเงิน</h1>
+                        @endif
                         @endforeach
                     </tbody>
                 </table>

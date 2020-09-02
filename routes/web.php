@@ -41,7 +41,7 @@ Route::get('store/profile/{id}', 'StoreController@storeProfile')->name('store.pr
 Route::get('store/storeEditProduct/{id}/{pid}', 'StoreController@storeEditProduct')->name('store.EditProduct')->middleware('auth');
 Route::post('store/storeEditProduct/{id}/{pid}', 'StoreController@storeEditProductSave')->name('store.EditProductSave')->middleware('auth');
 Route::get('store/storeShowAllOrder/{id}','StoreController@storeShowAllOrder')->name('store.ShowAllOrder')->middleware('auth');
-
+Route::put('store/updatebank/private','StoreController@updateBank')->name('store.updatebank')->middleware('auth');
 
 Route::get('user/profile', 'UserController@userprofile')->name('user.profile');
 Route::put('user/update', 'UserController@userupdate')->name('user.update');
@@ -54,3 +54,8 @@ Route::resource('checkout', 'CheckoutController');
 
 Route::get('/security','InfoController@security_page');
 Route::get('/contact','InfoController@contact_page');
+Route::get('/admin','AdminController@index')->name('admin.index');
+Route::get('/admin/system','AdminController@editSystem')->name('admin.edit.system');
+Route::post('/admin/systemcate','AdminController@addCategory')->name('admin.system.addcategory');
+Route::post('/admin/systemtype','AdminController@addUserType')->name('admin.system.addusertype');
+Route::put('/admin/editUser','AdminController@adminEditUser')->name('admin.edit.user');
