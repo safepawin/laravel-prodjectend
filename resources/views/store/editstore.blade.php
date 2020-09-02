@@ -33,15 +33,25 @@
                     <input type="hidden" name="store_id" value="{{isset($store->bank->store_id) ? $store->bank->store_id : $id}}">
                     <div class="form-group">
                         <label for="">ชื่อธนาคาร</label>
-                        <input class="form-control" type="text" name="bank_name" value="{{isset($store->bank->bank_name) ? $store->bank->bank_name : ''}}">
+                        <select class="form-control" type="text" name="bank_name" >
+                            <option value="{{isset($store->bank->bank_name) ? $store->bank->bank_name : ''}}" selected>{{isset($store->bank->bank_name) ? $store->bank->bank_name : ''}}</option>
+                            <option value="ธนาคาร กสิกร">ธนาคาร กสิกร</option>
+                            <option value="ธนาคาร ไทยพานิชย์">ธนาคาร ไทยพานิชย์</option>
+                            <option value="ธนาคาร กรุงเทพ">ธนาคาร กรุงเทพ</option>
+                            <option value="ธนาคาร กรุงไทย">ธนาคาร กรุงไทย</option>
+                            <option value="ธนาคาร TMB">ธนาคาร TMB</option>
+                            <option value="ธนาคาร กรุงศรีอยุธยา">ธนาคาร กรุงศรีอยุธยา</option>
+                            <option value="ธนาคาร ธนชาต">ธนาคาร ธนชาต</option>
+                            <option value="ธนาคาร ยูโอบี">ธนาคาร ยูโอบี</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="">เลขบัญชี</label>
-                        <input class="form-control" type="text" name="bank_number" value="{{isset($store->bank->bank_number) ? $store->bank->bank_number : ''}}">
+                        <input class="form-control" type="text" name="bank_number" maxlength="10" value="{{isset($store->bank->bank_number) ? $store->bank->bank_number : ''}}">
                     </div>
                     <div class="form-group">
                         <label for="">เบอร์โทร</label>
-                        <input class="form-control" type="text" name="bank_phone" value="{{isset($store->bank->bank_phone) ? $store->bank->bank_phone : ''}}">
+                        <input class="form-control" type="text" name="bank_phone" maxlength="10" value="{{isset($store->bank->bank_phone) ? $store->bank->bank_phone : ''}}">
                     </div>
 
                     <button type="submit" class="btn btn-primary">บันทึก</button>

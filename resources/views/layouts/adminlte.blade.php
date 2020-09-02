@@ -67,6 +67,9 @@
           {{-- <img src="{{.Auth::user()->store->find($id)->store_image}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                style="opacity: .8"> --}}
           <span class="brand-text font-weight-light">{{Auth::user()->store->find($id)->store_name}}</span>
+          @if (isset(Auth::user()->store->find($id)->bank))
+            @else <span class="text-white badge badge-danger d-block">กรอกข้อมูลชำระเงินที่นี่</span>
+          @endif
         </a>
 
         <!-- Sidebar -->

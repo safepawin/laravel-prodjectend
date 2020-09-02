@@ -56,12 +56,15 @@
                     </thead>
                     <tbody>
                         @foreach (Cart::session(Auth::id())->getContent() as $item)
+                        @if (isset($item->attributes->bank))
                         <tr class="text-center">
                             <td>{{$item->attributes->bank->bank_name}}</td>
                             <td><b>{{$item->attributes->bank->bank_number}}</b></td>
                             <td>{{$item->attributes->bank->store->firstname}}  {{$item->attributes->bank->store->lastname}}</td>
                             <td>{{$item->attributes->bank->bank_phone}}</td>
                         </tr>
+                        @else <h1 class="text-center text-danger">ผู้ขายไม่ได้กรอกรายระเอียดการชำระเงิน</h1>
+                        @endif
                         @endforeach
                     </tbody>
                 </table>
